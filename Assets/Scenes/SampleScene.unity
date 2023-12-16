@@ -787,7 +787,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6744184580922645627, guid: f12d98fb739c5db4b97c930a93c79a64, type: 3}
   spawnPoint: {fileID: 485809164}
   bulletSpeed: 10
-  ammoManager: {fileID: 1502787212}
+  socketInteractor: {fileID: 2058452447}
+  mag: {fileID: 1212336712}
 --- !u!114 &330116979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,6 +1343,7 @@ GameObject:
   - component: {fileID: 1212336708}
   - component: {fileID: 1212336707}
   - component: {fileID: 1212336706}
+  - component: {fileID: 1212336712}
   m_Layer: 6
   m_Name: Mag
   m_TagString: Magazine
@@ -1567,55 +1569,21 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1502787209
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1502787211}
-  - component: {fileID: 1502787212}
-  m_Layer: 0
-  m_Name: Managers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1502787211
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502787209}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1502787212
+--- !u!114 &1212336712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502787209}
+  m_GameObject: {fileID: 1212336705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ff6199151c3f643abc543c229d3924, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f142f08094a22440882874b106cab23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 24
-  maxMagazine: 6
-  currentAmmo: 0
+  numberOfBullets: 6
 --- !u!1 &1565143137
 GameObject:
   m_ObjectHideFlags: 0

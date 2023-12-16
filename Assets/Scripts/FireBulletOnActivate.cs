@@ -8,23 +8,46 @@ public class FireBulletOnActivate : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public float bulletSpeed = 10f;
-    public AmmoManager ammoManager;
-
+    public XRBaseInteractor socketInteractor;
+    public Magazine mag;
     // Start is called before the first frame update
     void Start()
     {
         XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
         grabbable.activated.AddListener(FireBullet);
+
+        socketInteractor.onSelectEntered.AddListener(AddMagazine);
+        socketInteractor.onSelectExit.AddListener(RemoveMagazine);
     }
 
-    void Update()
+    public void AddMagazine(XRBaseInteractable interactor)
+    {
+        mag = interactor.GetComponent<Magazine>();
+        //mag.numberOfBullets = maxMagazine;
+    }
+
+    public void RemoveMagazine(XRBaseInteractable interactor)
+    {
+        mag = null;
+    }
+
+    public void Slide(XRBaseInteractable interactor)
     {
 
+    }
+
+    public bool CanShoot()
+    {
+        if (mag != null)
+        {
+            return mag.numberOfBullets > 0;
+        }
+        else { return false; }
     }
 
     public void FireBullet(ActivateEventArgs args)
     {
-        if (ammoManager.CanShoot())
+        if (CanShoot() && mag != null)
         {
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.transform.position = spawnPoint.position;
@@ -32,7 +55,7 @@ public class FireBulletOnActivate : MonoBehaviour
             rb.velocity = spawnPoint.forward * bulletSpeed;
             Destroy(bullet, 5);
 
-            ammoManager.Shoot();
+           mag.numberOfBullets--;
         }
         else
         {
