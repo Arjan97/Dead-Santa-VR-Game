@@ -16,7 +16,7 @@ public class FireBulletOnActivate : MonoBehaviour
         XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
         grabbable.activated.AddListener(FireBullet);
 
-        socketInteractor.onSelectEntered.AddListener(AddMagazine);
+        socketInteractor.onSelectEnter.AddListener(AddMagazine);
         socketInteractor.onSelectExit.AddListener(RemoveMagazine);
     }
 
@@ -38,29 +38,30 @@ public class FireBulletOnActivate : MonoBehaviour
 
     public bool CanShoot()
     {
-        if (mag != null)
-        {
             return mag.numberOfBullets > 0;
-        }
-        else { return false; }
+        
     }
 
     public void FireBullet(ActivateEventArgs args)
     {
-        if (CanShoot() && mag != null)
+        if (mag)
         {
-            GameObject bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = spawnPoint.position;
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.velocity = spawnPoint.forward * bulletSpeed;
-            Destroy(bullet, 5);
+            if (CanShoot())
+            {
+                GameObject bullet = Instantiate(bulletPrefab);
+                bullet.transform.position = spawnPoint.position;
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                rb.velocity = spawnPoint.forward * bulletSpeed;
+                Destroy(bullet, 5);
 
-           mag.numberOfBullets--;
+                mag.numberOfBullets--;
+            }
+            else
+            {
+                // Out of ammo
+                Debug.Log("Out of ammo!");
+            }
         }
-        else
-        {
-            // Out of ammo
-            Debug.Log("Out of ammo!");
-        }
+        
     }
 }
