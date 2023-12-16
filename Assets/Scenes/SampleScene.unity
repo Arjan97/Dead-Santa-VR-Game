@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 47768279}
   - component: {fileID: 47768278}
   - component: {fileID: 47768277}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 191917026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 330116974}
   - component: {fileID: 330116979}
   - component: {fileID: 330116978}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 485809164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1274,7 +1274,7 @@ GameObject:
   - component: {fileID: 1124175135}
   - component: {fileID: 1124175134}
   - component: {fileID: 1124175133}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: XR Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1342,7 +1342,7 @@ GameObject:
   - component: {fileID: 1212336708}
   - component: {fileID: 1212336707}
   - component: {fileID: 1212336706}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3145,7 +3145,7 @@ GameObject:
   - component: {fileID: 2058452444}
   - component: {fileID: 2058452446}
   - component: {fileID: 2058452445}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagLoc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
