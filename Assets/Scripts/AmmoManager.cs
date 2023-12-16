@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class AmmoManager : MonoBehaviour
 {
@@ -8,11 +9,14 @@ public class AmmoManager : MonoBehaviour
     [SerializeField] public int maxMagazine = 6; // Maximum magazine size
     [SerializeField] private int currentAmmo; // Current total ammo count
     private int currentMagazine; // Current magazine size
+    private XRBaseInteractor socketInteractor;
 
     void Start()
     {
         currentAmmo = maxAmmo;
         currentMagazine = maxMagazine;
+        socketInteractor.OnSelectEnter.AddListener(AddMagazine);
+        socketInteractor.OnSelectEnter.AddListener(RemoveMagazine);
     }
 
     public int GetCurrentAmmo()
@@ -25,11 +29,19 @@ public class AmmoManager : MonoBehaviour
         return currentMagazine;
     }
 
-    public void Reload()
+    public void AddMagazine(XRBaseInteractable interactor)
     {
-        int bulletsToReload = Mathf.Min(maxMagazine - currentMagazine, currentAmmo);
-        currentMagazine += bulletsToReload;
-        currentAmmo -= bulletsToReload;
+        currentAmmo = maxMagazine;
+    }
+    
+    public void RemoveMagazine(XRBaseInteractable interactor) 
+    {
+        currentAmmo = 0;
+    }
+
+    public void Slide(XRBaseInteractable interactor)
+    {
+
     }
 
     public bool CanShoot()
@@ -39,7 +51,7 @@ public class AmmoManager : MonoBehaviour
 
     public void Shoot()
     {
-        if (CanShoot())
+        if (CanShoot() && mag != null)
         {
             currentMagazine--;
         }
