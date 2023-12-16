@@ -3145,7 +3145,7 @@ GameObject:
   - component: {fileID: 2058452444}
   - component: {fileID: 2058452446}
   - component: {fileID: 2058452445}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: MagLoc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
