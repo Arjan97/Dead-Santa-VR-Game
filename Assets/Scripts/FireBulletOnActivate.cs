@@ -37,6 +37,7 @@ public class FireBulletOnActivate : MonoBehaviour
         else
         {
             // Out of ammo
+            Debug.Log("Out of ammo!");
         }
     }
 }
