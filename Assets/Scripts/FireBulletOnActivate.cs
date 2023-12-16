@@ -4,36 +4,29 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 public class FireBulletOnActivate : MonoBehaviour
 {
-
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public float bulletSpeed = 10f;
     public XRBaseInteractor socketInteractor;
     public Magazine mag;
-    // Start is called before the first frame update
+
     void Start()
     {
         XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
         grabbable.activated.AddListener(FireBullet);
 
-        socketInteractor.onSelectEnter.AddListener(AddMagazine);
-        socketInteractor.onSelectExit.AddListener(RemoveMagazine);
+        socketInteractor.onSelectEntered.AddListener(AddMagazine);
+        socketInteractor.onSelectExited.AddListener(RemoveMagazine);
     }
 
     public void AddMagazine(XRBaseInteractable interactor)
     {
         mag = interactor.GetComponent<Magazine>();
-        //mag.numberOfBullets = maxMagazine;
     }
 
     public void RemoveMagazine(XRBaseInteractable interactor)
     {
         mag = null;
-    }
-
-    public void Slide(XRBaseInteractable interactor)
-    {
-
     }
 
     public bool CanShoot()
