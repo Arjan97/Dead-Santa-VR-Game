@@ -5,14 +5,19 @@ public class EnemyHealth : MonoBehaviour
     public float maxHealth = 50f;
     [SerializeField] private float currentHealth;
 
+    private EnemyAnimatorHandler animatorHandler;
+
     void Start()
     {
         currentHealth = maxHealth;
+        animatorHandler = GetComponent<EnemyAnimatorHandler>();
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        animatorHandler.SetHit();
 
         if (currentHealth <= 0)
         {
@@ -22,7 +27,8 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Enemy has died!");
-        Destroy(gameObject, 5); 
+        animatorHandler.SetDead();
+
+        Destroy(gameObject, 4f);
     }
 }

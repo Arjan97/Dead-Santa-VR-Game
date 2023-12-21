@@ -150,7 +150,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6685773103252751496}
-  m_LocalRotation: {x: 0.21417804, y: 0.9680815, z: -0.0716097, w: -0.10871102}
+  m_LocalRotation: {x: 0.21417806, y: 0.9680815, z: -0.071609706, w: -0.10871102}
   m_LocalPosition: {x: 0.074817196, y: -0.023815563, z: -0.2583569}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -713,9 +713,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6685773103252527372}
   - component: {fileID: 6685773103260022514}
+  - component: {fileID: 13048663}
+  - component: {fileID: 13048660}
+  - component: {fileID: 13048664}
+  - component: {fileID: 13048665}
+  - component: {fileID: 13048666}
   m_Layer: 0
   m_Name: OrcPAMaskTint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -757,6 +762,77 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!65 &13048663
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685773103252751660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.97330487, y: 1.769394, z: 1}
+  m_Center: {x: -0.04995793, y: 0.89448005, z: 0}
+--- !u!114 &13048660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685773103252751660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26d6b9e6323ac741a88b89a9dc9e8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  currentHealth: 0
+--- !u!114 &13048664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685773103252751660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7151f7b53115c45b42c88a63258c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  attackRange: 3
+  attackDelay: 2
+  attackAnimationAmount: 2
+--- !u!114 &13048665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685773103252751660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59919fb7e3ca9c47913959482f18408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  chaseRange: 5
+  movementSpeed: 3
+  rotationSpeed: 3
+--- !u!114 &13048666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685773103252751660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c9cbca8fc0b634db27a5deeec2c46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6685773103252751662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1362,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6685773103252751690}
-  m_LocalRotation: {x: -0.0044832667, y: -0.5875046, z: 0.03116433, w: 0.80860806}
+  m_LocalRotation: {x: -0.004483267, y: -0.5875046, z: 0.031164331, w: 0.80860806}
   m_LocalPosition: {x: -0.2921151, y: 0.002244041, z: 0.08007366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2226,7 +2302,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6685773103252751742}
-  m_LocalRotation: {x: -0.07864549, y: -0.62511414, z: 0.10001114, w: 0.7700942}
+  m_LocalRotation: {x: -0.07864548, y: -0.62511414, z: 0.100011125, w: 0.7700942}
   m_LocalPosition: {x: -0.28028288, y: 0.13612537, z: 0.043782037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

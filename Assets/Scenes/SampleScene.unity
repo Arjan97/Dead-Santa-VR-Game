@@ -239,6 +239,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   currentHealth: 0
+--- !u!65 &13048663
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13048659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.97330487, y: 1.769394, z: 1}
+  m_Center: {x: -0.04995793, y: 0.89448005, z: 0}
+--- !u!114 &13048664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13048659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7151f7b53115c45b42c88a63258c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  attackRange: 3
+  attackDelay: 2
+  attackAnimationAmount: 2
+--- !u!114 &13048665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13048659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59919fb7e3ca9c47913959482f18408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  chaseRange: 5
+  movementSpeed: 3
+  rotationSpeed: 3
+--- !u!114 &13048666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13048659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c9cbca8fc0b634db27a5deeec2c46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &441658422
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +960,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6685773103252527402, guid: 07185ab269a664048b93ba358c3006b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.004483267
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685773103252527402, guid: 07185ab269a664048b93ba358c3006b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.031164331
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685773103252527454, guid: 07185ab269a664048b93ba358c3006b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.07864548
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685773103252527454, guid: 07185ab269a664048b93ba358c3006b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.100011125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685773103252527464, guid: 07185ab269a664048b93ba358c3006b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.21417806
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685773103252527464, guid: 07185ab269a664048b93ba358c3006b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.071609706
+      objectReference: {fileID: 0}
     - target: {fileID: 6685773103252751660, guid: 07185ab269a664048b93ba358c3006b9, type: 3}
       propertyPath: m_Name
       value: Orc_Enemy
@@ -1179,6 +1260,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 897026768}
+    - target: {fileID: 946016820, guid: b332a7ae18d4b61409ef739386369907, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 946016825, guid: b332a7ae18d4b61409ef739386369907, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -1186,6 +1271,10 @@ PrefabInstance:
     - target: {fileID: 1590350570671927313, guid: b332a7ae18d4b61409ef739386369907, type: 3}
       propertyPath: m_Name
       value: XR Origin / Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590350570671927313, guid: b332a7ae18d4b61409ef739386369907, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1590350570671927314, guid: b332a7ae18d4b61409ef739386369907, type: 3}
       propertyPath: m_RootOrder
