@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 public class EnemyAttack : MonoBehaviour
 {
-    public string playerTag = "Player";
     public float attackRange = 2f;
     public float attackDelay = 2f;
     public int attackAnimationAmount = 2;
 
+    private bool isTaunting = false;
     private bool isAttacking = false;
     private Transform player;
     private EnemyMovement enMove;
@@ -14,7 +14,7 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag(playerTag)?.transform;
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
         enMove = GetComponent<EnemyMovement>();
         animatorHandler = GetComponent<EnemyAnimatorHandler>();
     }
@@ -23,16 +23,40 @@ public class EnemyAttack : MonoBehaviour
     {
         if (player != null)
         {
-            if (IsPlayerInRange() && !isAttacking)
+            if (ShouldAttack())
             {
-                StartCoroutine(AttackWithDelay());
+                if (IsPlayerInRange() && !isAttacking)
+                {
+                    StartCoroutine(AttackWithDelay());
+                }
+                else if (!isAttacking)
+                {
+                    animatorHandler.SetChasing();
+                }
             }
-            else if (!isAttacking)
+            else
             {
-                animatorHandler.SetChasing();
+                PerformTaunt();
             }
         }
     }
+
+    private bool ShouldAttack()
+    {
+        if (player != null)
+        {
+            PlayerHat playerHat = player.GetComponentInChildren<PlayerHat>();
+            if (playerHat != null && playerHat.isEquipped && playerHat.hatTag == "Santa")
+            {
+                return false; 
+            }
+            animatorHandler.SetTauntEnd();
+            return true; 
+        }
+
+        return false;
+    }
+
 
     private void Attack()
     {
@@ -57,4 +81,21 @@ public class EnemyAttack : MonoBehaviour
     {
         return Vector3.Distance(transform.position, player.position) < attackRange;
     }
+
+    private void PerformTaunt()
+    {
+        if (!isTaunting)
+        {
+            StartCoroutine(TauntCooldown());
+            isTaunting = true;
+            animatorHandler.SetTaunt();
+        }
+    }
+
+    private IEnumerator TauntCooldown()
+    {
+        yield return new WaitForSeconds(attackDelay); 
+        isTaunting = false;
+    }
+
 }

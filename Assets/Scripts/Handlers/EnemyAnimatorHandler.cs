@@ -46,4 +46,17 @@ public class EnemyAnimatorHandler : MonoBehaviour
     {
         animator.SetTrigger("Attack" + attackNumber);
     }
+
+    public void SetTaunt()
+    {
+        animator.SetBool("isTaunting", true);
+        animator.SetBool("isIdle", false);
+        animator.SetBool("isChasing", false);
+        animator.SetBool("isBattleIdle", false);
+    }
+
+    public void SetTauntEnd()
+    {
+        animator.SetBool("isTaunting", false);
+    }
 }

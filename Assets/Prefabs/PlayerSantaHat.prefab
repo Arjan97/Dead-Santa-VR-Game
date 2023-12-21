@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4049555179479966945}
   - component: {fileID: 6123066437076436751}
   - component: {fileID: 8024933661167720570}
+  - component: {fileID: 7199427734276872104}
   m_Layer: 6
   m_Name: PlayerSantaHat
   m_TagString: Untagged
@@ -261,3 +262,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.4015248
   m_Center: {x: 0.5923968, y: 0.73622835, z: 0}
+--- !u!114 &7199427734276872104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8024933661158370238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6d1da44b51acc449d4d052dd8ae2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hatTag: Santa
+  isEquipped: 0
+  hatSocketInteractor: {fileID: 0}

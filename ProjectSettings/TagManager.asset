@@ -7,6 +7,8 @@ TagManager:
   - Magazine
   - Meteor
   - Enemy
+  - Santa
+  - PlayerHeadSocket
   layers:
   - Default
   - TransparentFX
