@@ -9,11 +9,14 @@ public class GunHandler : MonoBehaviour
     public float bulletSpeed = 10f;
     public XRBaseInteractor socketInteractor;
     public Magazine mag;
+    [SerializeField] private bool isRapidFireMode = false;
+    private bool isFiring = false;
 
     void Start()
     {
         XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
-        grabbable.activated.AddListener(FireBullet);
+        grabbable.activated.AddListener(StartFiring);
+        grabbable.deactivated.AddListener(StopFiring);
 
         socketInteractor.onSelectEntered.AddListener(AddMagazine);
         socketInteractor.onSelectExited.AddListener(RemoveMagazine);
@@ -34,8 +37,25 @@ public class GunHandler : MonoBehaviour
             return mag.numberOfBullets > 0;
         
     }
+    private void StartFiring(ActivateEventArgs args)
+    {
+        if (isRapidFireMode && CanShoot())
+        {
+            isFiring = true;
+            FireBullet(); 
+            InvokeRepeating(nameof(FireBullet), 0f, 0.15f); 
+        } else if (CanShoot())
+        {
+            FireBullet();
+        }
+    }
 
-    public void FireBullet(ActivateEventArgs args)
+    private void StopFiring(DeactivateEventArgs args)
+    {
+        isFiring = false;
+        CancelInvoke(nameof(FireBullet));
+    }
+    private void FireBullet()
     {
         if (mag)
         {
@@ -51,10 +71,18 @@ public class GunHandler : MonoBehaviour
             }
             else
             {
-                // Out of ammo
-                Debug.Log("Out of ammo!");
+                StopFiring(null); // Stop firing if out of ammo
             }
         }
-        
+    }
+
+    public void SetRapidFireMode(bool enable)
+    {
+        isRapidFireMode = enable;
+
+        if (!isRapidFireMode)
+        {
+            StopFiring(null); 
+        }
     }
 }
