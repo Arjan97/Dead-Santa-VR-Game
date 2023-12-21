@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  playerHatPrefab: {fileID: 0}
+  playerHatPrefab: {fileID: 8024933661158370238, guid: 695e635f54c7ed6488e879238413e341, type: 3}
   enemyHatPrefab: {fileID: 7455279418668188266}
   destroyEnemyObjDelay: 4
   currentHealth: 0
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  chaseRange: 5
+  chaseRange: 40
   movementSpeed: 3
   rotationSpeed: 3
 --- !u!114 &7455279418661534842
