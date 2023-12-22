@@ -20,5 +20,12 @@ public class BulletDamageHandler : MonoBehaviour
 
             Destroy(gameObject);
         }
+        if (collision.gameObject.CompareTag("Enemy_Flying"))
+        {
+            Vector3 dodgeDirection = Random.Range(0, 2) == 0 ? Vector3.right : Vector3.left;
+            EnemyFlying flyer = collision.gameObject.GetComponent<EnemyFlying>();
+            flyer.Dodge(dodgeDirection);
+            Destroy(gameObject);
+        }
     }
 }

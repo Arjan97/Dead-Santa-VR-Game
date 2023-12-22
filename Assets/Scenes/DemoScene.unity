@@ -2016,13 +2016,21 @@ PrefabInstance:
       value: -2.136
       objectReference: {fileID: 0}
     - target: {fileID: 4030319622483463137, guid: 3abb9b7b138ce3d4e80fd694b405d46b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030319622483463137, guid: 3abb9b7b138ce3d4e80fd694b405d46b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.314
+      value: -0.794
       objectReference: {fileID: 0}
     - target: {fileID: 4030319622483463167, guid: 3abb9b7b138ce3d4e80fd694b405d46b, type: 3}
       propertyPath: mag
       value: 
       objectReference: {fileID: 4478028503591552305}
+    - target: {fileID: 4030319622483463167, guid: 3abb9b7b138ce3d4e80fd694b405d46b, type: 3}
+      propertyPath: bulletSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4030319622483463167, guid: 3abb9b7b138ce3d4e80fd694b405d46b, type: 3}
       propertyPath: socketInteractor
       value: 
@@ -8035,6 +8043,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePerSecond: 10
+--- !u!1 &3891923351285909920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7357562126019335642, guid: b67a4a1ad0410da43aae4018c12d3259, type: 3}
+  m_PrefabInstance: {fileID: 5771833991941446778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3891923351293180525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891923351285909920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dded23bd64567e641a3c13c093b05aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dodgeForce: 70
 --- !u!114 &4478028503591552303 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6201566649767469736, guid: 97279c86ed745c24ca4aba3d0a7a5b88, type: 3}
@@ -8173,7 +8199,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5771833990599395576, guid: b67a4a1ad0410da43aae4018c12d3259, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b67a4a1ad0410da43aae4018c12d3259, type: 3}
 --- !u!1001 &7508981829042087815
 PrefabInstance:

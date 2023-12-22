@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
     public float chaseRange = 10f;
     public float movementSpeed = 3f;
     public float rotationSpeed = 3f;
+    public bool toggleMove = true;
 
     private Transform player;
     private EnemyAnimatorHandler animatorHandler;
@@ -24,11 +25,11 @@ public class EnemyMovement : MonoBehaviour
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            if (distanceToPlayer <= chaseRange && !enAttack.IsPlayerInRange())
+            if (distanceToPlayer <= chaseRange && !enAttack.IsPlayerInRange() && toggleMove)
             {
                 MoveTowardsPlayer();
             }
-            else if (!enAttack.IsPlayerInRange() && distanceToPlayer >= chaseRange)
+            else if (!enAttack.IsPlayerInRange() && distanceToPlayer >= chaseRange && toggleMove)
             {
                 Idling();
             }
