@@ -15,6 +15,7 @@ public class BulletDamageHandler : MonoBehaviour
             if (healthComponent != null)
             {
                 healthComponent.TakeDamage(damageAmount);
+                Debug.Log("Enemy hit for: " + damageAmount);
             }
 
             Destroy(gameObject);
