@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
             Die();
         }
 
-        if (!isHitOnCooldown) 
+        if (!isHitOnCooldown && !isDead) 
         {
             StartCoroutine(HitCooldown()); 
             animatorHandler.SetHit();
@@ -65,5 +65,10 @@ public class EnemyHealth : MonoBehaviour
         GameObject hat = Instantiate(playerHatPrefab, enemyHatPrefab.transform.position, Quaternion.identity);
         enemyHatPrefab.SetActive(false);
         
+    }
+
+    public bool GetIsDead()
+    {
+        return isDead;
     }
 }

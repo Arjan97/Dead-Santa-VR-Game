@@ -10,6 +10,8 @@ TagManager:
   - Santa
   - PlayerHeadSocket
   - PlayerHand
+  - Fire
+  - Enemy_Flying
   layers:
   - Default
   - TransparentFX
