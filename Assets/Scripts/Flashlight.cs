@@ -13,6 +13,12 @@ public class Flashlight : MonoBehaviour
     private void ToggleLights(ActivateEventArgs args)
     {
         lightOn = !lightOn;
-        GameObject.Find("Flashlight").enabled = lightOn;
+
+        Transform firstChild = transform.GetChild(0);
+
+        if (firstChild != null)
+        {
+            firstChild.gameObject.SetActive(lightOn);
+        }
     }
 }
