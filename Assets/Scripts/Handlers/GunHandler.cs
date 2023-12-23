@@ -55,6 +55,12 @@ public class GunHandler : MonoBehaviour
         socketInteractor.onSelectExited.AddListener(RemoveMagazine);
     }
 
+    void Update()
+    {
+        // Update the ammo counter text
+        UpdateAmmoCounterText();
+    }
+
     // Add a magazine to the gun
     public void AddMagazine(XRBaseInteractable interactor)
     {
@@ -105,8 +111,6 @@ public class GunHandler : MonoBehaviour
         {
             if (CanShoot())
             {
-                UpdateAmmoCounterText();
-
                 // Instantiate a bullet
                 GameObject bullet = Instantiate(bulletPrefab);
                 bullet.transform.position = spawnPoint.position;

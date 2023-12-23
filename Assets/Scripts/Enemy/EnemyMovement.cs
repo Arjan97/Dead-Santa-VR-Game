@@ -12,13 +12,13 @@ public class EnemyMovement : MonoBehaviour
     // Movement parameters
     public float movementSpeed = 3f;
     public float rotationSpeed = 3f;
-    public bool toggleMove = true;
+    public bool toggleMove = true; //To temp disable movement when hit etc.
 
     // Player and component references
     private Transform player;
     private EnemyAnimatorHandler animatorHandler;
     private EnemyAttack enAttack;
-
+    private EnemyHealth enHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +26,14 @@ public class EnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag(playerTag)?.transform;
         animatorHandler = GetComponent<EnemyAnimatorHandler>();
         enAttack = GetComponent<EnemyAttack>();
+        enHealth = GetComponent<EnemyHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Check if the player is present
-        if (player != null)
+        if (player != null && !enHealth.GetIsDead()) //Added check for dead, fixed bug where dead enemies would still chase
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
