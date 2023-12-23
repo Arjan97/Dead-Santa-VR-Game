@@ -8,12 +8,12 @@ public class FlashLightDamage : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        // Check if the collided object has an "Enemy" tag
         if (other.CompareTag("Enemy_Flying"))
         {
-            // Apply damage over time based on the light intensity
-            float damage = damagePerSecond * Time.deltaTime; //* GetComponent<Light>().intensity;
+            float damage = damagePerSecond * Time.deltaTime;
             other.GetComponent<EnemyHealth>().TakeDamage(damage);
+            Vector3 dodgeDirection = Random.Range(0, 2) == 0 ? Vector3.right : Vector3.left;
+            other.GetComponent<EnemyFlying>().Dodge(dodgeDirection);
         }
     }
 }
