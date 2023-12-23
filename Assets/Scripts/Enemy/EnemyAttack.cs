@@ -1,8 +1,12 @@
+// Script: EnemyAttack
+// Description: Manages enemy attacks, including melee and ranged attacks. Determines when to attack based on player proximity and conditions.
+
 using UnityEngine;
 using System.Collections;
+
 public class EnemyAttack : MonoBehaviour
 {
-
+    // Attack parameters
     public float attackRange = 2f;
     public float attackDelay = 2f;
     public float animationDelay = 0.3f;
@@ -11,17 +15,21 @@ public class EnemyAttack : MonoBehaviour
     public Transform rangedProjectileSpawn;
     public float projectileSpeed = 5f;
 
+    // Flags for attack state
     private bool isTaunting = false;
     private bool isAttacking = false;
+
     [SerializeField] private bool meleeEnabled = true;
     [SerializeField] private bool rangedEnabled = false;
 
+    // Player and other components references
     private Transform player;
     private EnemyMovement enMove;
     private EnemyAnimatorHandler animatorHandler;
 
     void Start()
     {
+        // Find the player, get components, and adjust attack delay
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         enMove = GetComponent<EnemyMovement>();
         animatorHandler = GetComponent<EnemyAnimatorHandler>();
@@ -30,6 +38,7 @@ public class EnemyAttack : MonoBehaviour
 
     void Update()
     {
+        // Check if player is present and handle attacks
         if (player != null)
         {
             if (ShouldAttack())
@@ -57,6 +66,7 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    // Check if enemy should attack based on player's hat type
     private bool ShouldAttack()
     {
         if (player != null)
@@ -73,6 +83,7 @@ public class EnemyAttack : MonoBehaviour
         return false;
     }
 
+    // Perform a melee attack
     private void MeleeAttack()
     {
         int randomAttack = Random.Range(1, attackAnimationAmount + 1);
@@ -82,6 +93,7 @@ public class EnemyAttack : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
     }
 
+    // Perform a ranged attack
     private void RangedAttack()
     {
         if (rangedProjectilePrefab != null)
@@ -115,6 +127,7 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    // Coroutine for delaying melee attack
     private IEnumerator MeleeAttackWithDelay()
     {
         isAttacking = true;
@@ -126,6 +139,7 @@ public class EnemyAttack : MonoBehaviour
         isAttacking = false;
     }
 
+    // Coroutine for delaying ranged attack
     private IEnumerator RangedAttackWithDelay()
     {
         isAttacking = true;
@@ -141,11 +155,13 @@ public class EnemyAttack : MonoBehaviour
         isAttacking = false;
     }
 
+    // Check if player is within attack range
     public bool IsPlayerInRange()
     {
         return Vector3.Distance(transform.position, player.position) < attackRange;
     }
 
+    // Perform taunt if not already taunting
     private void PerformTaunt()
     {
         if (!isTaunting)
@@ -156,6 +172,7 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    // Cooldown for taunt
     private IEnumerator TauntCooldown()
     {
         yield return new WaitForSeconds(attackDelay);
