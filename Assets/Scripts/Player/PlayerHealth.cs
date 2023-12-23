@@ -4,6 +4,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float beingHitCooldown = 2f;
+    public bool isHit = false;
+
     [SerializeField] private bool isInvincible = false;
     [SerializeField] private float currentHealth;
 
@@ -17,12 +19,11 @@ public class PlayerHealth : MonoBehaviour
         if (!isInvincible)
         {
             currentHealth -= damage;
-
+            isHit = true;
             if (currentHealth <= 0)
             {
                 Die();
             }
-
             StartCoroutine(Invincibility());
         }
     }
@@ -32,6 +33,8 @@ public class PlayerHealth : MonoBehaviour
         isInvincible = true;
         yield return new WaitForSeconds(beingHitCooldown);
         isInvincible = false;
+        isHit = false;
+
     }
     void Die()
     {
