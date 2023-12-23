@@ -77,6 +77,9 @@ public class EnemyAttack : MonoBehaviour
     {
         int randomAttack = Random.Range(1, attackAnimationAmount + 1);
         animatorHandler.SetAttack(randomAttack);
+
+        Vector3 direction = (player.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
     }
 
     private void RangedAttack()
