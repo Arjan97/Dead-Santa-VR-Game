@@ -39,14 +39,18 @@ public class GunHandler : MonoBehaviour
     }
     private void StartFiring(ActivateEventArgs args)
     {
-        if (isRapidFireMode && CanShoot())
+        if (mag)
         {
-            isFiring = true;
-            FireBullet(); 
-            InvokeRepeating(nameof(FireBullet), 0f, 0.15f); 
-        } else if (CanShoot())
-        {
-            FireBullet();
+            if (isRapidFireMode && CanShoot())
+            {
+                isFiring = true;
+                FireBullet();
+                InvokeRepeating(nameof(FireBullet), 0f, 0.15f);
+            }
+            else if (CanShoot())
+            {
+                FireBullet();
+            }
         }
     }
 

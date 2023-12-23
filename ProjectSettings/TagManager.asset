@@ -12,6 +12,7 @@ TagManager:
   - PlayerHand
   - Fire
   - Enemy_Flying
+  - Strappable
   layers:
   - Default
   - TransparentFX
