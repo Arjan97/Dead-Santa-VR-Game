@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
+
 public class GunHandler : MonoBehaviour
 {
     public GameObject bulletPrefab;
@@ -11,10 +13,14 @@ public class GunHandler : MonoBehaviour
     public Magazine mag;
     [SerializeField] private bool isRapidFireMode = false;
     private bool isFiring = false;
+    public TextMeshProUGUI ammoCounterText;
+    public TextMeshProUGUI rapidFireText;
 
     void Start()
     {
         XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
+        ammoCounterText.text = "24/24";
+        rapidFireText.text = "OFF";
         grabbable.activated.AddListener(StartFiring);
         grabbable.deactivated.AddListener(StopFiring);
 
@@ -65,6 +71,8 @@ public class GunHandler : MonoBehaviour
         {
             if (CanShoot())
             {
+                UpdateAmmoCounterText();
+
                 GameObject bullet = Instantiate(bulletPrefab);
                 bullet.transform.position = spawnPoint.position;
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -75,7 +83,7 @@ public class GunHandler : MonoBehaviour
             }
             else
             {
-                StopFiring(null); // Stop firing if out of ammo
+                StopFiring(null); 
             }
         }
     }
@@ -84,9 +92,28 @@ public class GunHandler : MonoBehaviour
     {
         isRapidFireMode = enable;
 
+        if (isRapidFireMode)
+        {
+            rapidFireText.text = "ON";
+
+        }
+
         if (!isRapidFireMode)
         {
-            StopFiring(null); 
+            StopFiring(null);
+            rapidFireText.text = "OFF";
+        }
+    }
+
+    private void UpdateAmmoCounterText()
+    {
+        if (ammoCounterText != null)
+        {
+            ammoCounterText.text = mag.numberOfBullets.ToString() + "/24";
+        }
+        else
+        {
+            Debug.LogWarning("AmmoCounterText not assigned in the inspector.");
         }
     }
 }
