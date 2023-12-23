@@ -9,6 +9,12 @@ TagManager:
   - Enemy
   - Santa
   - PlayerHeadSocket
+  - PlayerHand
+  - Fire
+  - Enemy_Flying
+  - Strappable
+  - Key
+  - AmmoCounter
   layers:
   - Default
   - TransparentFX
@@ -19,11 +25,11 @@ TagManager:
   - Grab Interactable
   - Player
   - Teleport
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Hands
+  - Interactive
+  - PostProcessing
+  - Enemy Projectile
+  - Enemies
   - 
   - 
   - 

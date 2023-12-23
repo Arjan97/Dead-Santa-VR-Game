@@ -22,14 +22,12 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Leaves3
   m_Shader: {fileID: -6465566751694194690, guid: 4c6d157e67564504cb314333b43da76c, type: 3}
-  m_ValidKeywords:
-  - _BUILTIN_ALPHATEST_ON
-  - _BUILTIN_AlphaClip
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 2000
   stringTagMap:
     RenderType: TransparentCutout
   disabledShaderPasses: []
