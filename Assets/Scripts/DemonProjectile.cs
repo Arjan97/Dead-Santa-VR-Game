@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DemonProjectile : MonoBehaviour
 {
-    public float damageAmount = 15f;
+    public float damageAmount = 20f;
 
     private GameObject shootingEnemy;
 
@@ -26,9 +26,6 @@ public class DemonProjectile : MonoBehaviour
                 enemyAnimator.SetPlayerHitTrigger();
             }
 
-            Destroy(gameObject);
-        } else
-        {
             Destroy(gameObject);
         }
     }

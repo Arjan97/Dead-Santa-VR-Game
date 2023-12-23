@@ -5,8 +5,10 @@ public class EnemyAttack : MonoBehaviour
 
     public float attackRange = 2f;
     public float attackDelay = 2f;
+    public float animationDelay = 0.3f;
     public int attackAnimationAmount = 2;
-    public GameObject rangedProjectilePrefab; 
+    public GameObject rangedProjectilePrefab;
+    public Transform rangedProjectileSpawn;
     public float projectileSpeed = 5f;
 
     private bool isTaunting = false;
@@ -23,6 +25,7 @@ public class EnemyAttack : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         enMove = GetComponent<EnemyMovement>();
         animatorHandler = GetComponent<EnemyAnimatorHandler>();
+        attackDelay = attackDelay - animationDelay;
     }
 
     void Update()
@@ -80,11 +83,12 @@ public class EnemyAttack : MonoBehaviour
     {
         if (rangedProjectilePrefab != null)
         {
-            GameObject projectile = Instantiate(rangedProjectilePrefab, transform.position, Quaternion.identity);
+            GameObject projectile = Instantiate(rangedProjectilePrefab, rangedProjectileSpawn.transform.position, Quaternion.identity);
             DemonProjectile projectileScript = projectile.GetComponent<DemonProjectile>();
             if (projectileScript != null)
             {
                 projectileScript.SetShootingEnemy(gameObject);
+                Destroy(projectile, 3f);
             }
             else
             {
@@ -106,9 +110,6 @@ public class EnemyAttack : MonoBehaviour
         {
             Debug.LogWarning("Ranged projectile prefab not assigned in the inspector.");
         }
-
-        int randomAttack = Random.Range(1, attackAnimationAmount + 1);
-        animatorHandler.SetAttack(randomAttack);
     }
 
     private IEnumerator MeleeAttackWithDelay()
@@ -118,7 +119,6 @@ public class EnemyAttack : MonoBehaviour
         animatorHandler.SetBattleIdle();
 
         yield return new WaitForSeconds(attackDelay);
-
         MeleeAttack();
 
         isAttacking = false;
@@ -132,6 +132,9 @@ public class EnemyAttack : MonoBehaviour
 
         yield return new WaitForSeconds(attackDelay);
 
+        int randomAttack = Random.Range(1, attackAnimationAmount + 1);
+        animatorHandler.SetAttack(randomAttack);
+        yield return new WaitForSeconds(animationDelay);
         RangedAttack();
 
         isAttacking = false;
