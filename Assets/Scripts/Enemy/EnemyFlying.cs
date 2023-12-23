@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyFlying : MonoBehaviour
 {
-    public float dodgeForce = 5f;
+    public float dodgeForce = 20f;
 
     private EnemyHealth enHealth;
     private EnemyMovement enMove;

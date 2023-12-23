@@ -2445,7 +2445,7 @@ GameObject:
   - component: {fileID: 5771833990599395334}
   - component: {fileID: 5771833990599395335}
   - component: {fileID: 5771833990599395332}
-  - component: {fileID: 5771833990599395576}
+  - component: {fileID: 8318608450120254071}
   m_Layer: 0
   m_Name: DemonFly_Enemy
   m_TagString: Enemy_Flying
@@ -2550,6 +2550,7 @@ MonoBehaviour:
   chaseRange: 20
   movementSpeed: 3
   rotationSpeed: 3
+  toggleMove: 1
 --- !u!114 &5771833990599395335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2580,7 +2581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c9cbca8fc0b634db27a5deeec2c46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5771833990599395576
+--- !u!114 &8318608450120254071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2589,11 +2590,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7357562126019335642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ae1c6daaccae345b2085bf7113de10, type: 3}
+  m_Script: {fileID: 11500000, guid: dded23bd64567e641a3c13c093b05aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverHeight: 5
-  rotationForce: 5
+  dodgeForce: 70
 --- !u!1 &7357562126019335644
 GameObject:
   m_ObjectHideFlags: 0
