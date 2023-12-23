@@ -7559,6 +7559,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5771833990599395329, guid: b67a4a1ad0410da43aae4018c12d3259, type: 3}
+      propertyPath: projectileSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771833990599395329, guid: b67a4a1ad0410da43aae4018c12d3259, type: 3}
+      propertyPath: attackAnimationAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771833990599395329, guid: b67a4a1ad0410da43aae4018c12d3259, type: 3}
+      propertyPath: rangedProjectilePrefab
+      value: 
+      objectReference: {fileID: 164416, guid: 071c1ed84e86d9d4cb93b43f311d1a8d, type: 3}
+    - target: {fileID: 5771833990599395334, guid: b67a4a1ad0410da43aae4018c12d3259, type: 3}
+      propertyPath: movementSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7357562126019335642, guid: b67a4a1ad0410da43aae4018c12d3259, type: 3}
       propertyPath: m_Name
       value: DemonFly_Enemy

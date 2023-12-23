@@ -303,6 +303,7 @@ MonoBehaviour:
   chaseRange: 40
   movementSpeed: 3
   rotationSpeed: 3
+  toggleMove: 1
 --- !u!114 &7455279418661534842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +331,10 @@ MonoBehaviour:
   attackRange: 2
   attackDelay: 2
   attackAnimationAmount: 2
+  rangedProjectilePrefab: {fileID: 0}
+  projectileSpeed: 5
+  meleeEnabled: 1
+  rangedEnabled: 0
 --- !u!1 &4305118087715430926
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,4 +59,9 @@ public class EnemyAnimatorHandler : MonoBehaviour
     {
         animator.SetBool("isTaunting", false);
     }
+
+    public void SetPlayerHitTrigger()
+    {
+        animator.SetTrigger("hitPlayer");
+    }
 }

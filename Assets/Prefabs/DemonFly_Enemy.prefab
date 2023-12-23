@@ -2533,7 +2533,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 10
   attackDelay: 3
-  attackAnimationAmount: 3
+  attackAnimationAmount: 2
+  rangedProjectilePrefab: {fileID: 164416, guid: 071c1ed84e86d9d4cb93b43f311d1a8d, type: 3}
+  projectileSpeed: 15
+  meleeEnabled: 0
+  rangedEnabled: 1
 --- !u!114 &5771833990599395334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2548,7 +2552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   chaseRange: 20
-  movementSpeed: 3
+  movementSpeed: 5
   rotationSpeed: 3
   toggleMove: 1
 --- !u!114 &5771833990599395335
