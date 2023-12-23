@@ -34,7 +34,11 @@ public class EnemyAttack : MonoBehaviour
         {
             if (ShouldAttack())
             {
-                if (IsPlayerInRange() && !isAttacking)
+                if (player.GetComponent<PlayerHealth>().isDead)
+                {
+                    PerformTaunt();
+                }
+                else if (IsPlayerInRange() && !isAttacking)
                 {
                     if (meleeEnabled)
                     {
@@ -44,10 +48,6 @@ public class EnemyAttack : MonoBehaviour
                     {
                         StartCoroutine(RangedAttackWithDelay());
                     }
-                }
-                else if (!isAttacking)
-                {
-                    animatorHandler.SetChasing();
                 }
             }
             else
@@ -115,28 +115,26 @@ public class EnemyAttack : MonoBehaviour
     private IEnumerator MeleeAttackWithDelay()
     {
         isAttacking = true;
-
+        enMove.toggleMove = false;
         animatorHandler.SetBattleIdle();
-
-        yield return new WaitForSeconds(attackDelay);
         MeleeAttack();
-
+        yield return new WaitForSeconds(attackDelay);
+        enMove.toggleMove = true;
         isAttacking = false;
     }
 
     private IEnumerator RangedAttackWithDelay()
     {
         isAttacking = true;
-
+        enMove.toggleMove = false;
         animatorHandler.SetBattleIdle();
-
-        yield return new WaitForSeconds(attackDelay);
 
         int randomAttack = Random.Range(1, attackAnimationAmount + 1);
         animatorHandler.SetAttack(randomAttack);
         yield return new WaitForSeconds(animationDelay);
         RangedAttack();
-
+        enMove.toggleMove = true;
+        yield return new WaitForSeconds(attackDelay);
         isAttacking = false;
     }
 

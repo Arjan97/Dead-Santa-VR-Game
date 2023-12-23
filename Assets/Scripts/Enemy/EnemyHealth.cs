@@ -11,11 +11,12 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float hitCooldownDuration = 1f; 
     private EnemyAnimatorHandler animatorHandler;
     private bool isDead = false;
-
+    private EnemyMovement enMove;
     void Start()
     {
         currentHealth = maxHealth;
         animatorHandler = GetComponent<EnemyAnimatorHandler>();
+        enMove = GetComponent<EnemyMovement>();
     }
 
     public void TakeDamage(float damage)
@@ -38,9 +39,10 @@ public class EnemyHealth : MonoBehaviour
 
     private IEnumerator HitCooldown()
     {
+        enMove.toggleMove = false;
         isHitOnCooldown = true; 
         yield return new WaitForSeconds(hitCooldownDuration);
-
+        enMove.toggleMove = true;
         isHitOnCooldown = false; 
     }
 
@@ -48,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
     {
         isDead = true;
         Debug.Log("Enemy has died!");
-       
+        enMove.toggleMove = false;
         animatorHandler.SetDead();
         if (enemyHatPrefab != null)
         {

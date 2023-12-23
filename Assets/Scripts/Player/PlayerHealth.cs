@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public bool isDead = false;
 
     public Transform respawnPoint;
-    public float respawnDelay = 5f;
+    public float respawnDelay = 10f;
     public TextMeshProUGUI respawnText;
     public TextMeshProUGUI respawnTimerText;
     public GameObject panel;
