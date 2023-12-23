@@ -10586,6 +10586,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3936868353539413690, guid: d17ff3543df13a940ae56dd4b8a5726e, type: 3}
   m_PrefabInstance: {fileID: 2082024986}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2145216733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6117506875311567618, guid: 32e47a52464118447bd5985a5abd09f6, type: 3}
+  m_PrefabInstance: {fileID: 6117506874843620006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2504a8b6126c347bcb7f36b7f9f272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1429421402817431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4632091374231059567, guid: 1ec1459c0807bcf4c9024e4a52ef8be3, type: 3}
@@ -10887,6 +10898,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237526408}
     m_Modifications:
+    - target: {fileID: 7199427734276872104, guid: 695e635f54c7ed6488e879238413e341, type: 3}
+      propertyPath: hatSocketInteractor
+      value: 
+      objectReference: {fileID: 2145216733}
     - target: {fileID: 8024933661158370238, guid: 695e635f54c7ed6488e879238413e341, type: 3}
       propertyPath: m_Name
       value: PlayerSantaHat
