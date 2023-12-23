@@ -1702,7 +1702,7 @@ MonoBehaviour:
   isHit: 0
   isDead: 0
   respawnPoint: {fileID: 0}
-  respawnDelay: 5
+  respawnDelay: 10
   respawnText: {fileID: 6117506875597602168}
   respawnTimerText: {fileID: 6117506875339690179}
   panel: {fileID: 6117506874844834834}
@@ -3843,7 +3843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 6117506875365325735}
-  m_MoveSpeed: 3
+  m_MoveSpeed: 4
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1
