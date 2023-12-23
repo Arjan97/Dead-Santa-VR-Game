@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
@@ -51,7 +52,7 @@ public class PlayerHealth : MonoBehaviour
         {
             StopCoroutine(respawnCoroutine);
         }
-
+        Invoke("ReloadScene", respawnDelay); //Due to bugs like keeping items in hands etc. decided to reset the scene instead
         respawnCoroutine = StartCoroutine(Respawn());
     }
 
@@ -74,12 +75,20 @@ public class PlayerHealth : MonoBehaviour
             yield return new WaitForSeconds(1f);
             respawnTimer -= 1f;
         }
+    /*
+    Debug.Log("Player has respawned!");
+    currentHealth = maxHealth;
+    transform.position = respawnPoint.position;
+    panel.SetActive(false);
+    playerMovement.SetActive(true);
+    isDead = false;
+    */
+    }
 
-        Debug.Log("Player has respawned!");
-        currentHealth = maxHealth;
-        transform.position = respawnPoint.position;
-        panel.SetActive(false);
-        playerMovement.SetActive(true);
-        isDead = false;
+    void ReloadScene()
+    {
+    int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+    SceneManager.LoadScene(currentSceneIndex);
     }
 }
