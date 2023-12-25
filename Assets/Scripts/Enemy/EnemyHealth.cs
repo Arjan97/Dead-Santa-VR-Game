@@ -65,7 +65,6 @@ public class EnemyHealth : MonoBehaviour
     {
         isDead = true;
         Debug.Log("Enemy has died!");
-        enMove.toggleMove = false;
         animatorHandler.SetDead();
 
         // Drop hat if specified

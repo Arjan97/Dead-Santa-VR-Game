@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7199427734276872104}
   m_Layer: 6
   m_Name: PlayerSantaHat
-  m_TagString: Untagged
+  m_TagString: Santa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,4 +276,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hatTag: Santa
   isEquipped: 0
-  hatSocketInteractor: {fileID: 0}

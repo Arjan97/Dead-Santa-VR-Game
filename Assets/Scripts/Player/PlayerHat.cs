@@ -15,7 +15,7 @@ public class PlayerHat : MonoBehaviour
     public bool isEquipped = false;
 
     // Reference to the XR socket interactor for the hat
-    public XRSocketInteractor hatSocketInteractor;
+    private XRSocketInteractor hatSocketInteractor;
 
     // Reference to the player GameObject
     private GameObject player;
@@ -27,6 +27,7 @@ public class PlayerHat : MonoBehaviour
     {
         // Find the player GameObject with the "Player" tag
         player = GameObject.FindGameObjectWithTag("Player");
+        hatSocketInteractor = GameObject.FindGameObjectWithTag("PlayerHeadSocket").GetComponent<XRSocketInteractor>();
 
         if (player == null)
         {
@@ -67,12 +68,17 @@ public class PlayerHat : MonoBehaviour
     // Called when the hat is removed
     private void OnHatRemoved(XRBaseInteractable interactable)
     {
-        // Restore the hat's original parent
-        transform.parent = originalParent;
+        // Check if the originalParent is not null before setting it as the parent
+        if (originalParent != null)
+        {
+            // Restore the hat's original parent
+            transform.parent = originalParent;
+        }
 
         // Update the equipped status
         isEquipped = false;
 
         Debug.Log("Hat Removed!");
     }
+
 }

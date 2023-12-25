@@ -101,7 +101,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         // Invoke the ReloadScene function after the specified respawnDelay
-        Invoke("ReloadScene", respawnDelay);
+        //Invoke("ReloadScene", respawnDelay);
 
         // Start the Respawn coroutine
         respawnCoroutine = StartCoroutine(Respawn());
@@ -139,19 +139,15 @@ public class PlayerHealth : MonoBehaviour
             // Decrease the respawnTimer by 1
             respawnTimer -= 1f;
         }
-
-        // Uncomment the following lines if the respawn functionality is fully implemented
-        /*
         Debug.Log("Player has respawned!");
         currentHealth = maxHealth;
         transform.position = respawnPoint.position;
         panel.SetActive(false);
         playerMovement.SetActive(true);
         isDead = false;
-        */
     }
 
-    // Function to reload the current scene
+    // Function to reload the current scene (hard reset)
     void ReloadScene()
     {
         // Get the index of the currently active scene
