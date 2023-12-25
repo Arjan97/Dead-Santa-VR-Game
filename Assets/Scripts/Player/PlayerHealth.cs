@@ -101,7 +101,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         // Invoke the ReloadScene function after the specified respawnDelay
-        //Invoke("ReloadScene", respawnDelay);
+        Invoke("ReloadScene", respawnDelay);
 
         // Start the Respawn coroutine
         respawnCoroutine = StartCoroutine(Respawn());
@@ -139,12 +139,13 @@ public class PlayerHealth : MonoBehaviour
             // Decrease the respawnTimer by 1
             respawnTimer -= 1f;
         }
+        /*
         Debug.Log("Player has respawned!");
         currentHealth = maxHealth;
         transform.position = respawnPoint.position;
         panel.SetActive(false);
         playerMovement.SetActive(true);
-        isDead = false;
+        isDead = false; */ // Old respawn code
     }
 
     // Function to reload the current scene (hard reset)
@@ -154,6 +155,6 @@ public class PlayerHealth : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         // Load the current scene
-        SceneManager.LoadScene(currentSceneIndex);
+        SceneManager.LoadScene("Menu");
     }
 }
