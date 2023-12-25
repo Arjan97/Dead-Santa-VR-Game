@@ -68,12 +68,17 @@ public class PlayerHat : MonoBehaviour
     // Called when the hat is removed
     private void OnHatRemoved(XRBaseInteractable interactable)
     {
-        // Restore the hat's original parent
-        transform.parent = originalParent;
+        // Check if the originalParent is not null before setting it as the parent
+        if (originalParent != null)
+        {
+            // Restore the hat's original parent
+            transform.parent = originalParent;
+        }
 
         // Update the equipped status
         isEquipped = false;
 
         Debug.Log("Hat Removed!");
     }
+
 }

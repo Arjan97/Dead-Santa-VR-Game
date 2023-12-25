@@ -1824,6 +1824,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1237526408}
     m_Modifications:
+    - target: {fileID: 1248168457188485320, guid: 6e899840d329cdd4fbc8e6dbf30c38fb, type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1593941133503160405, guid: 6e899840d329cdd4fbc8e6dbf30c38fb, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -11392,6 +11396,10 @@ PrefabInstance:
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 1918903558}
+    - target: {fileID: 6117506874844834835, guid: 32e47a52464118447bd5985a5abd09f6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -538.74
+      objectReference: {fileID: 0}
     - target: {fileID: 6117506875311567618, guid: 32e47a52464118447bd5985a5abd09f6, type: 3}
       propertyPath: m_InteractionManager
       value: 

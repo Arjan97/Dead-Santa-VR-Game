@@ -152,13 +152,16 @@ public class GunHandler : MonoBehaviour
     // Update the ammo counter text
     private void UpdateAmmoCounterText()
     {
-        if (ammoCounterText != null)
+        if (mag)
         {
-            ammoCounterText.text = mag.numberOfBullets.ToString() + "/24";
-        }
-        else
-        {
-            Debug.LogWarning("AmmoCounterText not assigned in the inspector.");
+            if (ammoCounterText != null)
+            {
+                ammoCounterText.text = mag.numberOfBullets.ToString() + "/24";
+            }
+            else
+            {
+                Debug.LogWarning("AmmoCounterText not assigned in the inspector.");
+            }
         }
     }
 }

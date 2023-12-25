@@ -72,11 +72,18 @@ public class EnemyAttack : MonoBehaviour
         if (player != null)
         {
             PlayerHat playerHat = player.GetComponentInChildren<PlayerHat>();
-            if (playerHat != null && playerHat.isEquipped && playerHat.hatTag == "Santa")
+            EnemyHealth enemyHat = GetComponent<EnemyHealth>();
+            // Check if the enemy has a hat prefab before accessing its tag
+            if (playerHat != null && playerHat.isEquipped && enemyHat != null && enemyHat.enemyHatPrefab != null && playerHat.hatTag == enemyHat.enemyHatPrefab.tag)
             {
                 return false;
             }
             animatorHandler.SetTauntEnd();
+            if (playerHat != null)
+            {
+                Debug.Log("should attack?" + playerHat.hatTag + " =/ " + enemyHat.tag);
+
+            }
             return true;
         }
 
