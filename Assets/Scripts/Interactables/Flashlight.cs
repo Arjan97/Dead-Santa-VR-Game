@@ -9,7 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Flashlight : MonoBehaviour
 {
     // Variable to track the state of the flashlight (on/off)
-    private bool lightOn = false;
+    private bool lightOn = true;
 
     void Start()
     {
