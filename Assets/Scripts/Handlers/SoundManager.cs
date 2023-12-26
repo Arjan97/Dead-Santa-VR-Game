@@ -70,6 +70,7 @@ public class SoundManager : MonoBehaviour
 
         // Play the initial music track
         PlayMusic(songName, 0.4f);
+        PlaySound("Monster_Noise");
     }
 
     // Play a sound effect without specifying a position

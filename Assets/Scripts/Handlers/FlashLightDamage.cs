@@ -22,6 +22,7 @@ public class FlashLightDamage : MonoBehaviour
             // Deal damage to the flying enemy
             other.GetComponent<EnemyHealth>().TakeDamage(damage);
 
+            SoundManager.Instance.PlaySoundAtPosition("flyhit", other.transform.position);
             /*
             // Determine a random dodge direction (right or left) for the flying enemy
             Vector3 dodgeDirection = Random.Range(0, 2) == 0 ? Vector3.right : Vector3.left;
