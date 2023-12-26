@@ -142,7 +142,7 @@ public class GunHandler : MonoBehaviour
                 // Destroy the bullet after a certain time
                 Destroy(bullet, 5);
 
-                SoundManager.Instance.PlaySoundAtPosition("Gun", transform.position);
+                SoundManager.Instance.PlaySoundAtPosition("Gun", transform.position, 0.7f);
                 // Decrease the number of bullets in the magazine
                 mag.numberOfBullets--;
             }
