@@ -18,7 +18,7 @@ public class PlayerHat : MonoBehaviour
     private XRSocketInteractor hatSocketInteractor;
 
     // Reference to the player GameObject
-    private GameObject player;
+    private GameObject playerHead;
 
     // The original parent of the hat before being equipped
     private Transform originalParent;
@@ -26,17 +26,17 @@ public class PlayerHat : MonoBehaviour
     void Start()
     {
         // Find the player GameObject with the "Player" tag
-        player = GameObject.FindGameObjectWithTag("Player");
+        playerHead = GameObject.FindGameObjectWithTag("PlayerHeadSocket");
         hatSocketInteractor = GameObject.FindGameObjectWithTag("PlayerHeadSocket").GetComponent<XRSocketInteractor>();
 
-        if (player == null)
+        if (playerHead == null)
         {
-            Debug.LogError("Player not found. Make sure the player has the 'Player' tag.");
+            Debug.LogError("Playerhead not found. Make sure the player has the 'PlayerHeadSocket' tag.");
         }
 
         // Set the hat's tag to the specified hatTag
         gameObject.tag = hatTag;
-
+        
         // Check if the hatSocketInteractor is assigned
         if (hatSocketInteractor == null)
         {
@@ -53,16 +53,18 @@ public class PlayerHat : MonoBehaviour
     // Called when the hat is equipped
     private void OnHatEquipped(XRBaseInteractable interactable)
     {
-        // Store the original parent before changing it to the player's transform
-        originalParent = transform.parent;
+        // Check if the player already has a child (hat) to prevent multiple equips
+        if (playerHead.transform.childCount == 1)
+        {
+            // Store the original parent before changing it to the player's transform
+            originalParent = transform.parent;
 
-        // Set the hat's parent to the player's transform
-        transform.parent = player.transform;
-
-        // Update the equipped status
-        isEquipped = true;
-
-        Debug.Log("Hat Equipped!");
+            // Set the hat's parent to the player's transform
+            transform.parent = playerHead.transform;
+            // Update the equipped status
+            isEquipped = true;
+            Debug.Log("Hat Equipped!");
+        }
     }
 
     // Called when the hat is removed

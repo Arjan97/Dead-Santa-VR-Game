@@ -24,8 +24,14 @@ public class GunHandler : MonoBehaviour
     // Magazine attached to the gun
     public Magazine mag;
 
+    // Delay between consecutive shots
+    [SerializeField] private float fireDelay = 0.5f; 
+
     // Flag for rapid fire mode
     [SerializeField] private bool isRapidFireMode = false;
+    // Flag to track whether the gun is currently firing
+    private bool isFiring = false; 
+
     // UI element for displaying ammo count
     public TextMeshProUGUI ammoCounterText;
 
@@ -61,6 +67,8 @@ public class GunHandler : MonoBehaviour
     public void AddMagazine(XRBaseInteractable interactor)
     {
         mag = interactor.GetComponent<Magazine>();
+        SoundManager.Instance.PlaySoundAtPosition("reload", transform.position);
+
     }
 
     // Remove the magazine from the gun
@@ -85,16 +93,34 @@ public class GunHandler : MonoBehaviour
                 FireBullet();
                 InvokeRepeating(nameof(FireBullet), 0f, 0.15f);
             }
-            else if (CanShoot())
+            else if (CanShoot() && !isFiring)
             {
-                FireBullet();
+                StartCoroutine(SingleFire());
             }
         }
+    }
+    // Coroutine for single fire mode
+    private IEnumerator SingleFire()
+    {
+        FireBullet();
+        isFiring = true;
+        yield return new WaitForSeconds(fireDelay);
+        isFiring = false;
     }
 
     // Stop firing bullets
     private void StopFiring(DeactivateEventArgs args)
     {
+        if (mag != null && mag.numberOfBullets <= 0)
+        {
+            SoundManager.Instance.PlaySoundAtPosition("magempty", transform.position);
+        }
+
+        if (mag == null)
+        {
+            SoundManager.Instance.PlaySoundAtPosition("nomag", transform.position);
+        }
+
         CancelInvoke(nameof(FireBullet));
     }
 
@@ -116,6 +142,7 @@ public class GunHandler : MonoBehaviour
                 // Destroy the bullet after a certain time
                 Destroy(bullet, 5);
 
+                SoundManager.Instance.PlaySoundAtPosition("Gun", transform.position, 0.7f);
                 // Decrease the number of bullets in the magazine
                 mag.numberOfBullets--;
             }

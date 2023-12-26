@@ -9,6 +9,16 @@ public class BulletDamageHandler : MonoBehaviour
 {
     // Damage amount inflicted by the bullet
     public float damageAmount = 10f;
+    // Indicates whether the bullet is a rock
+    public bool isRock = false;
+    public float minDamageVelocity = 4f;
+
+    private Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     // Callback when the bullet collides with another object
     void OnCollisionEnter(Collision collision)
@@ -16,18 +26,25 @@ public class BulletDamageHandler : MonoBehaviour
         // Check if the collision involves an enemy
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Get the enemy's health component
-            EnemyHealth healthComponent = collision.gameObject.GetComponent<EnemyHealth>();
-
-            // Deal damage to the enemy if the health component is present
-            if (healthComponent != null)
+            // Check if the velocity is above the minimum required velocity
+            if (rb != null && rb.velocity.magnitude >= minDamageVelocity)
             {
-                healthComponent.TakeDamage(damageAmount);
-                Debug.Log("Enemy hit for: " + damageAmount);
+                // Get the enemy's health component
+                EnemyHealth healthComponent = collision.gameObject.GetComponent<EnemyHealth>();
+
+                // Deal damage to the enemy if the health component is present
+                if (healthComponent != null)
+                {
+                    healthComponent.TakeDamage(damageAmount);
+                    Debug.Log("Enemy hit for: " + damageAmount);
+                }
             }
 
-            // Destroy the bullet after hitting an enemy
-            Destroy(gameObject);
+            // Destroy the bullet after hitting an enemy (if it's not a rock)
+            if (!isRock)
+            {
+                Destroy(gameObject);
+            }
         }
 
         // Check if the collision involves a flying enemy
