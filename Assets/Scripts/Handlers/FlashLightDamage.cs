@@ -14,7 +14,7 @@ public class FlashLightDamage : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         // Check if the collider belongs to a flying enemy
-        if (other.CompareTag("Enemy_Flying"))
+        if (other.CompareTag("Enemy_Flying") && !other.GetComponent<EnemyHealth>().GetIsDead())
         {
             // Calculate damage based on damage per second and time delta
             float damage = damagePerSecond * Time.deltaTime;

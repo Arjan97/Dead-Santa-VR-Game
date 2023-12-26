@@ -18,7 +18,7 @@ public class BattleChecker : MonoBehaviour
             {
                 Debug.Log("Player sees enemies");
                 UpdateBattleState();
-                SoundManager.Instance.PlayMusic("battlemusic", 0.6f, musicPlaybackPosition);
+                SoundManager.Instance.PlayMusic("battlemusic", 0.4f, musicPlaybackPosition);
                 isInBattle = true;
             }
         }
