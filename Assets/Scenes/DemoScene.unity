@@ -831,6 +831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundTravelDistance: 20
+  songName: abnormal
   soundClips:
   - {fileID: 8300000, guid: 8698acf7299a6d04594312496ed0ecf6, type: 3}
   - {fileID: 8300000, guid: dc2c1bdb2cfb9be438a70b944784b6e7, type: 3}
@@ -851,8 +852,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a2cb9f8f4930f7e48b48bf85834f464c, type: 3}
   - {fileID: 8300000, guid: 074ccb664b11e1341a5ac9b972ea3ab8, type: 3}
   - {fileID: 8300000, guid: c6621749cd50c5b4bbf0db0c13c627b8, type: 3}
+  - {fileID: 8300000, guid: 34988eaf11478cf42a608ca2339a223c, type: 3}
+  - {fileID: 8300000, guid: c9b33ef419cca7548aae9a6d04b18179, type: 3}
+  - {fileID: 8300000, guid: bf0defdf04605a54b8dd6fb010287195, type: 3}
+  - {fileID: 8300000, guid: eb678b058dd26224ab8425962c662abc, type: 3}
   musicTracks:
-  - {fileID: 8300000, guid: 733b09436aaee5748962f990766ee399, type: 3}
+  - {fileID: 8300000, guid: a084f831b2416984987740a6fed1a7f7, type: 3}
   soundVolume: 1
   musicVolume: 0.6
 --- !u!1001 &122306354

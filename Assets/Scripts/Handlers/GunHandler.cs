@@ -67,6 +67,8 @@ public class GunHandler : MonoBehaviour
     public void AddMagazine(XRBaseInteractable interactor)
     {
         mag = interactor.GetComponent<Magazine>();
+        SoundManager.Instance.PlaySoundAtPosition("reload", transform.position);
+
     }
 
     // Remove the magazine from the gun
@@ -109,6 +111,16 @@ public class GunHandler : MonoBehaviour
     // Stop firing bullets
     private void StopFiring(DeactivateEventArgs args)
     {
+        if (mag != null && mag.numberOfBullets <= 0)
+        {
+            SoundManager.Instance.PlaySoundAtPosition("magempty", transform.position);
+        }
+
+        if (mag == null)
+        {
+            SoundManager.Instance.PlaySoundAtPosition("nomag", transform.position);
+        }
+
         CancelInvoke(nameof(FireBullet));
     }
 

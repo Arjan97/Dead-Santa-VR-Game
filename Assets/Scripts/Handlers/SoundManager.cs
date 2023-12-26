@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     // Maximum distance for 3D sound spatialization
     public float soundTravelDistance = 20f;
 
+    public string songName;
     // Arrays for storing sound effects and music tracks
     public AudioClip[] soundClips;
     public AudioClip[] musicTracks;
@@ -68,7 +69,7 @@ public class SoundManager : MonoBehaviour
         musicSource.volume = musicVolume;
 
         // Play the initial music track
-        PlayMusic("ForestMusic", 0.6f);
+        PlayMusic(songName, 0.4f);
     }
 
     // Play a sound effect without specifying a position
