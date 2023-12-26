@@ -69,7 +69,8 @@ public class SoundManager : MonoBehaviour
         musicSource.volume = musicVolume;
 
         // Play the initial music track
-        PlayMusic(songName, 0.4f);
+        PlayMusic(songName, musicVolume);
+        PlaySound("Monster_Noise");
     }
 
     // Play a sound effect without specifying a position
@@ -78,7 +79,7 @@ public class SoundManager : MonoBehaviour
         PlaySoundAtPosition(soundName, Vector3.zero, volume);
     }
 
-    public void PlaySoundAtPosition(string soundName, Vector3 position, float volume = 1f)
+    public void PlaySoundAtPosition(string soundName, Vector3 position, float volume = 1f, float pitch = 1f)
     {
         AudioClip clipToPlay = FindAudioClip(soundName, soundClips);
 
@@ -87,19 +88,36 @@ public class SoundManager : MonoBehaviour
             // Get the next available AudioSource from the pool
             AudioSource soundEffectSource = soundEffectSources[currentSoundEffectIndex];
 
-            // Set properties and play the sound effect
-            soundEffectSource.transform.position = position;
-            soundEffectSource.clip = clipToPlay;
-            soundEffectSource.volume = Mathf.Clamp01(volume);
-            soundEffectSource.Play();
+            // Check if the AudioSource is currently playing
+            if (!IsSoundPlaying(soundEffectSource))
+            {
+                // Set properties and play the sound effect
+                soundEffectSource.transform.position = position;
+                soundEffectSource.clip = clipToPlay;
+                soundEffectSource.volume = Mathf.Clamp01(volume);
+                soundEffectSource.pitch = Mathf.Clamp(pitch, 0.1f, 3f);
 
-            // Increment the index for the next available AudioSource
-            currentSoundEffectIndex = (currentSoundEffectIndex + 1) % soundEffectSources.Count;
+                soundEffectSource.Play();
+
+                // Increment the index for the next available AudioSource
+                currentSoundEffectIndex = (currentSoundEffectIndex + 1) % soundEffectSources.Count;
+            }
+            else
+            {
+                // Log a message or handle the case where the AudioSource is already playing
+                Debug.LogWarning("Sound is already playing. Wait for it to finish or use a different AudioSource.");
+            }
         }
     }
 
+    // Check if an AudioSource is currently playing
+    private bool IsSoundPlaying(AudioSource audioSource)
+    {
+        return audioSource.isPlaying && audioSource.time < audioSource.clip.length;
+    }
+
     // Play a music track
-    public void PlayMusic(string trackName, float volume = 1f)
+    public void PlayMusic(string trackName, float volume = 1f, float playbackPosition = 0f)
     {
         AudioClip trackToPlay = FindAudioClip(trackName, musicTracks);
 
@@ -107,8 +125,14 @@ public class SoundManager : MonoBehaviour
         {
             musicSource.clip = trackToPlay;
             musicSource.volume = Mathf.Clamp01(volume);
+            musicSource.time = playbackPosition;
             musicSource.Play();
         }
+    }
+    //So music doesn't restart each time
+    public float GetMusicPlaybackPosition()
+    {
+        return musicSource.time;
     }
 
     // Set the volume for sound effects

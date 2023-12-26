@@ -25,7 +25,7 @@ public class PlayerHat : MonoBehaviour
 
     void Start()
     {
-        // Find the player GameObject with the "Player" tag
+        // Find the player GameObject with the "PlayerHeadSocket" tag
         playerHead = GameObject.FindGameObjectWithTag("PlayerHeadSocket");
         hatSocketInteractor = GameObject.FindGameObjectWithTag("PlayerHeadSocket").GetComponent<XRSocketInteractor>();
 
@@ -64,6 +64,10 @@ public class PlayerHat : MonoBehaviour
             // Update the equipped status
             isEquipped = true;
             Debug.Log("Hat Equipped!");
+        }
+        else
+        {
+            Debug.Log("Already have a hat equipped dummy.");
         }
     }
 

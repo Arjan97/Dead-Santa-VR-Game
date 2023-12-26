@@ -15,6 +15,7 @@ TagManager:
   - Strappable
   - Key
   - AmmoCounter
+  - BattleChecker
   layers:
   - Default
   - TransparentFX

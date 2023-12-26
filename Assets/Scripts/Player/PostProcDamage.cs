@@ -17,6 +17,9 @@ public class PostProcDamage : MonoBehaviour
     // Reference to the Vignette post-processing effect
     Vignette _vignette;
 
+    // Reference to the PlayerHealth component
+    PlayerHealth playerHealth;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,13 +39,16 @@ public class PostProcDamage : MonoBehaviour
             // Disable the vignette effect initially
             _vignette.enabled.Override(false);
         }
+
+        // Get the PlayerHealth component
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Check if the player is hit
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().isHit)
+        if (playerHealth.isHit)
         {
             // Trigger the damage effect coroutine
             StartCoroutine(TakeDamageEffect());
@@ -52,8 +58,8 @@ public class PostProcDamage : MonoBehaviour
     // Coroutine for the damage effect
     private IEnumerator TakeDamageEffect()
     {
-        // Set the intensity to maximum for the vignette effect
-        intensity = 1f;
+       
+        float intensity = 1f;
 
         // Enable the vignette effect
         _vignette.enabled.Override(true);

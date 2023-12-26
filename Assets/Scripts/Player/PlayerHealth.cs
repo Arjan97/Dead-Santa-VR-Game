@@ -38,6 +38,9 @@ public class PlayerHealth : MonoBehaviour
     // GameObject representing the player's movement
     public GameObject playerMovement;
 
+    // Audio source for heartbeat sound
+    public AudioSource heartbeatAudio;
+
     // Indicates whether the player is invincible
     [SerializeField] private bool isInvincible = false;
 
@@ -55,6 +58,9 @@ public class PlayerHealth : MonoBehaviour
         // Deactivate the respawn panel and activate the player's movement
         panel.SetActive(false);
         playerMovement.SetActive(true);
+
+        // Start heartbeat coroutine
+        StartCoroutine(Heartbeat());
     }
 
     // Function to handle player taking damage
@@ -98,6 +104,8 @@ public class PlayerHealth : MonoBehaviour
         // Set isDead to true
         isDead = true;
 
+        SoundManager.Instance.PlaySound("heartbeatdead");
+        SoundManager.Instance.SetMusicVolume(0);
         // Check if the respawnCoroutine is not null and stop it
         if (respawnCoroutine != null)
         {
@@ -152,13 +160,48 @@ public class PlayerHealth : MonoBehaviour
         isDead = false; */ // Old respawn code
     }
 
+    // Coroutine for heartbeat sound variation
+    IEnumerator Heartbeat()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        while (currentHealth > 0)
+        {
+            // Check if the current scene is not "Menu"
+            if (currentScene != "Menu")
+            {
+                // Calculate heartbeat speed based on player's health
+                float heartbeatSpeed = Mathf.Lerp(1f, 2f, (maxHealth - currentHealth) / maxHealth);
+
+                // Calculate wait duration based on heartbeatSpeed
+                float waitDuration = Mathf.Lerp(2f, 0.2f, (maxHealth - currentHealth) / maxHealth);
+
+                heartbeatAudio.pitch = heartbeatSpeed;
+                heartbeatAudio.Play();
+
+                // Wait for a dynamic duration based on heartbeatSpeed
+                yield return new WaitForSeconds(waitDuration);
+            }
+            else
+            {
+                // If the scene is "Menu," wait for a short duration and check again
+                yield return new WaitForSeconds(1f);
+            }
+        }
+    }
+
     // Function to reload the current scene (hard reset)
     void ReloadScene()
     {
         // Get the index of the currently active scene
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
+        heartbeatAudio.Stop();
         // Load the current scene
         SceneManager.LoadScene("Menu");
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }

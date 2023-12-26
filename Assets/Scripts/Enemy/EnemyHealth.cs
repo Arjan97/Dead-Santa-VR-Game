@@ -21,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
     private EnemyAnimatorHandler animatorHandler;
     private bool isDead = false;
     private EnemyMovement enMove;
+    private BattleChecker battleChecker;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
         animatorHandler = GetComponent<EnemyAnimatorHandler>();
         enMove = GetComponent<EnemyMovement>();
+        battleChecker = FindObjectOfType<BattleChecker>();
     }
 
     // Method for taking damage
@@ -72,8 +74,9 @@ public class EnemyHealth : MonoBehaviour
         {
             StartCoroutine(HatDropPositioningDelay());
         }
-
         // Destroy the enemy object after a delay
+        battleChecker?.OnEnemyDestroyed();
+
         Destroy(gameObject, destroyEnemyObjDelay);
     }
 
