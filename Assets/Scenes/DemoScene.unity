@@ -850,6 +850,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0b02c09b276fdeb40a0378331b9baef5, type: 3}
   - {fileID: 8300000, guid: a2cb9f8f4930f7e48b48bf85834f464c, type: 3}
   - {fileID: 8300000, guid: 074ccb664b11e1341a5ac9b972ea3ab8, type: 3}
+  - {fileID: 8300000, guid: c6621749cd50c5b4bbf0db0c13c627b8, type: 3}
   musicTracks:
   - {fileID: 8300000, guid: 733b09436aaee5748962f990766ee399, type: 3}
   soundVolume: 1

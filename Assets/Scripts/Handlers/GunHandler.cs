@@ -24,8 +24,14 @@ public class GunHandler : MonoBehaviour
     // Magazine attached to the gun
     public Magazine mag;
 
+    // Delay between consecutive shots
+    [SerializeField] private float fireDelay = 0.5f; 
+
     // Flag for rapid fire mode
     [SerializeField] private bool isRapidFireMode = false;
+    // Flag to track whether the gun is currently firing
+    private bool isFiring = false; 
+
     // UI element for displaying ammo count
     public TextMeshProUGUI ammoCounterText;
 
@@ -85,11 +91,19 @@ public class GunHandler : MonoBehaviour
                 FireBullet();
                 InvokeRepeating(nameof(FireBullet), 0f, 0.15f);
             }
-            else if (CanShoot())
+            else if (CanShoot() && !isFiring)
             {
-                FireBullet();
+                StartCoroutine(SingleFire());
             }
         }
+    }
+    // Coroutine for single fire mode
+    private IEnumerator SingleFire()
+    {
+        FireBullet();
+        isFiring = true;
+        yield return new WaitForSeconds(fireDelay);
+        isFiring = false;
     }
 
     // Stop firing bullets
@@ -116,6 +130,7 @@ public class GunHandler : MonoBehaviour
                 // Destroy the bullet after a certain time
                 Destroy(bullet, 5);
 
+                SoundManager.Instance.PlaySoundAtPosition("Gun", transform.position);
                 // Decrease the number of bullets in the magazine
                 mag.numberOfBullets--;
             }
