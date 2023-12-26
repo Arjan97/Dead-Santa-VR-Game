@@ -11014,11 +11014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2504a8b6126c347bcb7f36b7f9f272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1429421402817431 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4632091374231059567, guid: 1ec1459c0807bcf4c9024e4a52ef8be3, type: 3}
-  m_PrefabInstance: {fileID: 4633476815162343416}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &53952300374309486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11084,33 +11079,6 @@ PrefabInstance:
       objectReference: {fileID: 2013968864}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7965eb9b9646eb540ae43d619c028d32, type: 3}
---- !u!136 &108794589704295216
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429421402817431}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 2
-  m_Height: 20
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 10}
---- !u!114 &108794589704295217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429421402817431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7d706a42cc66464f9816c6d451a043e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagePerSecond: 10
 --- !u!4 &525992743771556918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1593941133503160405, guid: 6e899840d329cdd4fbc8e6dbf30c38fb, type: 3}
@@ -11430,17 +11398,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 98.346
       objectReference: {fileID: 0}
-    - target: {fileID: 4632091374231059567, guid: 1ec1459c0807bcf4c9024e4a52ef8be3, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4633040268260122677, guid: 1ec1459c0807bcf4c9024e4a52ef8be3, type: 3}
       propertyPath: m_Name
       value: Flashlight
-      objectReference: {fileID: 0}
-    - target: {fileID: 4633040268260122677, guid: 1ec1459c0807bcf4c9024e4a52ef8be3, type: 3}
-      propertyPath: m_TagString
-      value: Strappable
       objectReference: {fileID: 0}
     - target: {fileID: 4633476814441916902, guid: 1ec1459c0807bcf4c9024e4a52ef8be3, type: 3}
       propertyPath: m_InteractionManager
