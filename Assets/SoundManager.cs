@@ -4,6 +4,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
+    public float soundTravelDistance = 20f;
+
     public AudioClip[] soundClips;
     public AudioClip[] musicTracks;
 
@@ -28,6 +30,11 @@ public class SoundManager : MonoBehaviour
         // Create AudioSources for sound effects and music
         soundSource = gameObject.AddComponent<AudioSource>();
         musicSource = gameObject.AddComponent<AudioSource>();
+
+        // Enable 3D spatialization for sound effects
+        soundSource.spatialBlend = 1f; // 1 means fully 3D, 0 means 2D
+        soundSource.rolloffMode = AudioRolloffMode.Linear;
+        soundSource.maxDistance = soundTravelDistance; 
     }
 
     private void Start()

@@ -13,6 +13,13 @@ public class DemonProjectile : MonoBehaviour
     // Reference to the enemy shooting the projectile
     private GameObject shootingEnemy;
 
+
+    void Start()
+    {
+        int randomSound = Random.Range(1, 8);
+        SoundManager.Instance.PlaySoundAtPosition("FireShoot" + randomSound, transform.position);
+    }
+
     // Triggered upon collision with other colliders
     void OnTriggerEnter(Collider other)
     {
@@ -35,6 +42,8 @@ public class DemonProjectile : MonoBehaviour
             {
                 enemyAnimator.SetPlayerHitTrigger();
             }
+            int randomSound = Random.Range(1, 3);
+            SoundManager.Instance.PlaySoundAtPosition("Monster_Laugh" + randomSound, shootingEnemy.transform.position);
 
             // Destroy the projectile after hitting the player
             Destroy(gameObject);

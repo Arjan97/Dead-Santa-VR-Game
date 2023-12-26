@@ -153,6 +153,9 @@ public class EnemyAttack : MonoBehaviour
         enMove.toggleMove = false;
         animatorHandler.SetBattleIdle();
 
+        int randomSound = Random.Range(1, 4);
+        SoundManager.Instance.PlaySoundAtPosition("Imp_" + randomSound, transform.position);
+
         int randomAttack = Random.Range(1, attackAnimationAmount + 1);
         animatorHandler.SetAttack(randomAttack);
         yield return new WaitForSeconds(animationDelay);

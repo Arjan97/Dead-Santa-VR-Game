@@ -786,6 +786,74 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c6711ebf90203340ae4ea9049c1c9b4, type: 3}
+--- !u!1 &113411635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 113411636}
+  - component: {fileID: 113411637}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &113411636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113411635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1532811928}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &113411637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113411635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f0a6dce29bc2147b107999c26e277a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundTravelDistance: 20
+  soundClips:
+  - {fileID: 8300000, guid: 8698acf7299a6d04594312496ed0ecf6, type: 3}
+  - {fileID: 8300000, guid: dc2c1bdb2cfb9be438a70b944784b6e7, type: 3}
+  - {fileID: 8300000, guid: dccc9db1582fa6e4f9a293d847e84c38, type: 3}
+  - {fileID: 8300000, guid: 614928dbac2289d47a5c3bd876eba2c3, type: 3}
+  - {fileID: 8300000, guid: 3e2675d8550a17642a9c3f57a7abfc5d, type: 3}
+  - {fileID: 8300000, guid: 5e51ec3288f2f7e4abcdd091ab1f1f0c, type: 3}
+  - {fileID: 8300000, guid: 4033c1929346b6742b8bb4d166064d2d, type: 3}
+  - {fileID: 8300000, guid: 6a1c6aa46d30de94093adaf775b68066, type: 3}
+  - {fileID: 8300000, guid: cca32ac4edc354f4cbfcece2a523870a, type: 3}
+  - {fileID: 8300000, guid: 48dd270d5a9552f468ae2e1ab30d4ca9, type: 3}
+  - {fileID: 8300000, guid: 9d291ce7e8ec09647bcdd49f1e4c1ceb, type: 3}
+  - {fileID: 8300000, guid: da5aeec65dfce4d449024607b399a5ec, type: 3}
+  - {fileID: 8300000, guid: ca679721d8a1b6243acc9a7ce566789b, type: 3}
+  - {fileID: 8300000, guid: 04f423841d9fff345a394fdb44f4bac4, type: 3}
+  - {fileID: 8300000, guid: 4e44e54a7843332488751c1d44253487, type: 3}
+  - {fileID: 8300000, guid: 0b02c09b276fdeb40a0378331b9baef5, type: 3}
+  - {fileID: 8300000, guid: a2cb9f8f4930f7e48b48bf85834f464c, type: 3}
+  - {fileID: 8300000, guid: 074ccb664b11e1341a5ac9b972ea3ab8, type: 3}
+  musicTracks:
+  - {fileID: 8300000, guid: 733b09436aaee5748962f990766ee399, type: 3}
+  soundVolume: 1
+  musicVolume: 1
 --- !u!1001 &122306354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7771,6 +7839,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.2571263, y: 3.6070623, z: 4.8274856}
   m_Center: {x: -0.27345854, y: 0.48880744, z: 0.27565286}
+--- !u!1 &1532811927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1532811928}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1532811928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532811927}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -87.5449, y: -88.61864, z: 333.0787}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 113411636}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536605394
 GameObject:
   m_ObjectHideFlags: 0
