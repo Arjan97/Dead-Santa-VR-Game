@@ -25,6 +25,7 @@ public class EnemyAttack : MonoBehaviour
     // Player and other components references
     private Transform player;
     private EnemyMovement enMove;
+    private EnemyHealth enHealth;
     private EnemyAnimatorHandler animatorHandler;
 
     void Start()
@@ -32,6 +33,7 @@ public class EnemyAttack : MonoBehaviour
         // Find the player, get components, and adjust attack delay
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         enMove = GetComponent<EnemyMovement>();
+        enHealth = GetComponent<EnemyHealth>();
         animatorHandler = GetComponent<EnemyAnimatorHandler>();
         attackDelay = attackDelay - animationDelay;
     }
@@ -93,44 +95,50 @@ public class EnemyAttack : MonoBehaviour
     // Perform a melee attack
     private void MeleeAttack()
     {
-        int randomAttack = Random.Range(1, attackAnimationAmount + 1);
-        animatorHandler.SetAttack(randomAttack);
+        if (!enHealth.GetIsDead())
+        {
+            int randomAttack = Random.Range(1, attackAnimationAmount + 1);
+            animatorHandler.SetAttack(randomAttack);
 
-        Vector3 direction = (player.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            Vector3 direction = (player.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        }
     }
 
     // Perform a ranged attack
     private void RangedAttack()
     {
-        if (rangedProjectilePrefab != null)
+        if (!enHealth.GetIsDead())
         {
-            GameObject projectile = Instantiate(rangedProjectilePrefab, rangedProjectileSpawn.transform.position, Quaternion.identity);
-            DemonProjectile projectileScript = projectile.GetComponent<DemonProjectile>();
-            if (projectileScript != null)
+            if (rangedProjectilePrefab != null)
             {
-                projectileScript.SetShootingEnemy(gameObject);
-                Destroy(projectile, 3f);
-            }
-            else
-            {
-                Debug.LogWarning("DemonProjectile component not found on the projectile prefab.");
-            }
-            Vector3 direction = (player.position - transform.position).normalized;
+                GameObject projectile = Instantiate(rangedProjectilePrefab, rangedProjectileSpawn.transform.position, Quaternion.identity);
+                DemonProjectile projectileScript = projectile.GetComponent<DemonProjectile>();
+                if (projectileScript != null)
+                {
+                    projectileScript.SetShootingEnemy(gameObject);
+                    Destroy(projectile, 3f);
+                }
+                else
+                {
+                    Debug.LogWarning("DemonProjectile component not found on the projectile prefab.");
+                }
+                Vector3 direction = (player.position - transform.position).normalized;
 
-            Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
-            if (projectileRigidbody != null)
-            {
-                projectileRigidbody.velocity = direction * projectileSpeed;
+                Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
+                if (projectileRigidbody != null)
+                {
+                    projectileRigidbody.velocity = direction * projectileSpeed;
+                }
+                else
+                {
+                    Debug.LogWarning("Rigidbody component not found on the projectile prefab.");
+                }
             }
             else
             {
-                Debug.LogWarning("Rigidbody component not found on the projectile prefab.");
+                Debug.LogWarning("Ranged projectile prefab not assigned in the inspector.");
             }
-        }
-        else
-        {
-            Debug.LogWarning("Ranged projectile prefab not assigned in the inspector.");
         }
     }
 

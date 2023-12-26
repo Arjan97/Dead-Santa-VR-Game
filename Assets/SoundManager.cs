@@ -1,6 +1,6 @@
 // Script: SoundManager
 // Description: Manages sound effects and music in the game, providing methods to play and control audio.
-
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -22,6 +22,10 @@ public class SoundManager : MonoBehaviour
     // Default volumes for sound effects and music
     public float soundVolume = 1f;
     public float musicVolume = 1f;
+
+    // Create a pool of AudioSources for sound effects to prevent overlapping/cancellations
+    private List<AudioSource> soundEffectSources = new List<AudioSource>();
+    private int currentSoundEffectIndex = 0;
 
     // Awake method called before Start; handles singleton pattern and initializes AudioSources
     private void Awake()
@@ -47,6 +51,13 @@ public class SoundManager : MonoBehaviour
         soundSource.spatialBlend = 1f; // 1 means fully 3D, 0 means 2D
         soundSource.rolloffMode = AudioRolloffMode.Linear;
         soundSource.maxDistance = soundTravelDistance;
+
+        // Create a pool of AudioSources for sound effects
+        for (int i = 0; i < 5; i++) 
+        {
+            AudioSource soundEffectSource = gameObject.AddComponent<AudioSource>();
+            soundEffectSources.Add(soundEffectSource);
+        }
     }
 
     // Start method called on the first frame; sets initial volumes and plays an initial music track
@@ -57,7 +68,7 @@ public class SoundManager : MonoBehaviour
         musicSource.volume = musicVolume;
 
         // Play the initial music track
-        PlayMusic("ForestMusic", 0.7f);
+        PlayMusic("ForestMusic", 0.6f);
     }
 
     // Play a sound effect without specifying a position
@@ -66,17 +77,23 @@ public class SoundManager : MonoBehaviour
         PlaySoundAtPosition(soundName, Vector3.zero, volume);
     }
 
-    // Play a sound effect at a specific position
     public void PlaySoundAtPosition(string soundName, Vector3 position, float volume = 1f)
     {
         AudioClip clipToPlay = FindAudioClip(soundName, soundClips);
 
         if (clipToPlay != null)
         {
-            soundSource.transform.position = position;
-            soundSource.clip = clipToPlay;
-            soundSource.volume = Mathf.Clamp01(volume);
-            soundSource.Play();
+            // Get the next available AudioSource from the pool
+            AudioSource soundEffectSource = soundEffectSources[currentSoundEffectIndex];
+
+            // Set properties and play the sound effect
+            soundEffectSource.transform.position = position;
+            soundEffectSource.clip = clipToPlay;
+            soundEffectSource.volume = Mathf.Clamp01(volume);
+            soundEffectSource.Play();
+
+            // Increment the index for the next available AudioSource
+            currentSoundEffectIndex = (currentSoundEffectIndex + 1) % soundEffectSources.Count;
         }
     }
 
