@@ -99,7 +99,7 @@ public class SoundManager : MonoBehaviour
     }
 
     // Play a music track
-    public void PlayMusic(string trackName, float volume = 1f)
+    public void PlayMusic(string trackName, float volume = 1f, float playbackPosition = 0f)
     {
         AudioClip trackToPlay = FindAudioClip(trackName, musicTracks);
 
@@ -107,8 +107,14 @@ public class SoundManager : MonoBehaviour
         {
             musicSource.clip = trackToPlay;
             musicSource.volume = Mathf.Clamp01(volume);
+            musicSource.time = playbackPosition;
             musicSource.Play();
         }
+    }
+    //So music doesn't restart each time
+    public float GetMusicPlaybackPosition()
+    {
+        return musicSource.time;
     }
 
     // Set the volume for sound effects

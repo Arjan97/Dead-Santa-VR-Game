@@ -858,6 +858,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eb678b058dd26224ab8425962c662abc, type: 3}
   musicTracks:
   - {fileID: 8300000, guid: a084f831b2416984987740a6fed1a7f7, type: 3}
+  - {fileID: 8300000, guid: cfad79ea6e13c934a8a2d3d2229c9587, type: 3}
   soundVolume: 1
   musicVolume: 0.6
 --- !u!1001 &122306354
@@ -2663,6 +2664,11 @@ Transform:
   m_Father: {fileID: 1829570859}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &501776975 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4825553658695153175, guid: 32e47a52464118447bd5985a5abd09f6, type: 3}
+  m_PrefabInstance: {fileID: 6117506874843620006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &501784192
 GameObject:
   m_ObjectHideFlags: 0
@@ -6002,6 +6008,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1165414917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1165414918}
+  - component: {fileID: 1165414920}
+  - component: {fileID: 1165414919}
+  m_Layer: 7
+  m_Name: BattleChecker
+  m_TagString: BattleChecker
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1165414918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165414917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 501776975}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1165414919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165414917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33497da1123d4564d8809c3624b93269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInBattle: 0
+--- !u!135 &1165414920
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165414917}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 23.085814
+  m_Center: {x: 0, y: 4.72, z: 0}
 --- !u!1 &1166127866 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2377534026312883310, guid: 8b3316f81e5104d4ba2693791ba29bb0, type: 3}
@@ -7750,6 +7815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 500
   isRock: 0
+  minDamageVelocity: 7
 --- !u!114 &1530745583
 MonoBehaviour:
   m_ObjectHideFlags: 0
