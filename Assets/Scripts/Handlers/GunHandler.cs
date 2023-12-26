@@ -26,10 +26,6 @@ public class GunHandler : MonoBehaviour
 
     // Flag for rapid fire mode
     [SerializeField] private bool isRapidFireMode = false;
-
-    // Flag for firing status
-    private bool isFiring = false;
-
     // UI element for displaying ammo count
     public TextMeshProUGUI ammoCounterText;
 
@@ -86,7 +82,6 @@ public class GunHandler : MonoBehaviour
         {
             if (isRapidFireMode && CanShoot())
             {
-                isFiring = true;
                 FireBullet();
                 InvokeRepeating(nameof(FireBullet), 0f, 0.15f);
             }
@@ -100,7 +95,6 @@ public class GunHandler : MonoBehaviour
     // Stop firing bullets
     private void StopFiring(DeactivateEventArgs args)
     {
-        isFiring = false;
         CancelInvoke(nameof(FireBullet));
     }
 

@@ -67,6 +67,10 @@ public class PlayerHealth : MonoBehaviour
             currentHealth -= damage;
             Debug.Log("Player got damaged for: " + damage);
 
+            // Play a sound at a specific position
+            int randomPainSound = Random.Range(1, 7);
+            SoundManager.Instance.PlaySoundAtPosition("Pain_" + randomPainSound, transform.position);
+
             // Set isHit to true
             isHit = true;
 

@@ -22,11 +22,12 @@ public class FlashLightDamage : MonoBehaviour
             // Deal damage to the flying enemy
             other.GetComponent<EnemyHealth>().TakeDamage(damage);
 
+            /*
             // Determine a random dodge direction (right or left) for the flying enemy
             Vector3 dodgeDirection = Random.Range(0, 2) == 0 ? Vector3.right : Vector3.left;
 
             // Trigger dodge maneuver for the flying enemy
-            other.GetComponent<EnemyFlying>().Dodge(dodgeDirection);
+            other.GetComponent<EnemyFlying>().Dodge(dodgeDirection); */ //Left out because it's too buggy as of now
         }
     }
 }
