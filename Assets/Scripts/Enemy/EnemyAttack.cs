@@ -180,7 +180,7 @@ public class EnemyAttack : MonoBehaviour
     }
 
     // Perform taunt if not already taunting
-    private void PerformTaunt()
+    public void PerformTaunt()
     {
         if (!isTaunting)
         {
