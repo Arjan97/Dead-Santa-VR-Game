@@ -1767,6 +1767,7 @@ GameObject:
   - component: {fileID: 5930009307558617348}
   - component: {fileID: 1045683099135970465}
   - component: {fileID: 1045683099135970466}
+  - component: {fileID: 3645207520093169350}
   - component: {fileID: 1045683099135970479}
   - component: {fileID: 1045683099135970476}
   - component: {fileID: 1045683100913273880}
@@ -1845,6 +1846,22 @@ MonoBehaviour:
   destroyEnemyObjDelay: 4
   currentHealth: 0
   hitCooldownDuration: 1
+--- !u!114 &3645207520093169350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930009307551355610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e21e0d42e2c3941963d521f626f286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  separationDistance: 2
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!114 &1045683099135970479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1886,8 +1903,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599fab692ea13804db9232151bf3bd1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 2
-  attackDelay: 2
+  attackRange: 2.5
+  attackDelay: 3
   animationDelay: 0.3
   attackAnimationAmount: 2
   rangedProjectilePrefab: {fileID: 0}

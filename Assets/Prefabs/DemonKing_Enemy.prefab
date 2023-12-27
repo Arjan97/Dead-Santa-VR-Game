@@ -814,6 +814,7 @@ GameObject:
   - component: {fileID: 1737279210222083651}
   - component: {fileID: 1737279210222083652}
   - component: {fileID: 1737279210222083653}
+  - component: {fileID: -2331537751670201851}
   m_Layer: 13
   m_Name: DemonKing_Enemy
   m_TagString: Enemy
@@ -930,8 +931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599fab692ea13804db9232151bf3bd1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 7
-  attackDelay: 5
+  attackRange: 6
+  attackDelay: 6
   animationDelay: 0.5
   attackAnimationAmount: 2
   rangedProjectilePrefab: {fileID: 0}
@@ -939,6 +940,22 @@ MonoBehaviour:
   projectileSpeed: 5
   meleeEnabled: 1
   rangedEnabled: 0
+--- !u!114 &-2331537751670201851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922398064892654638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e21e0d42e2c3941963d521f626f286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  separationDistance: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &4223326347491685477
 GameObject:
   m_ObjectHideFlags: 0

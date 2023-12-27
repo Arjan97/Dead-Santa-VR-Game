@@ -7,11 +7,12 @@ using UnityEngine;
 public class EnemyFlying : MonoBehaviour
 {
     // Dodge force for the maneuver
-    public float dodgeForce = 20f;
+    public float dodgeForce = 100f;
 
     // References to other components
     private EnemyHealth enHealth;
     private EnemyMovement enMove;
+    private EnemyAnimatorHandler enemyAnimatorHandler;
     private Rigidbody rb;
     private Vector3 originalPosition;
 
@@ -21,6 +22,7 @@ public class EnemyFlying : MonoBehaviour
         // Get references to components and add Rigidbody if not present
         enHealth = GetComponent<EnemyHealth>();
         enMove = GetComponent<EnemyMovement>();
+        enemyAnimatorHandler = GetComponent<EnemyAnimatorHandler>();
         rb = GetComponent<Rigidbody>();
 
         if (rb == null)
@@ -65,6 +67,15 @@ public class EnemyFlying : MonoBehaviour
         rb.isKinematic = false;
         enMove.toggleMove = false;
         originalPosition = transform.position;
+
+        // Trigger player hit animation on the  enemy if available
+
+        if (enemyAnimatorHandler != null)
+        {
+            enemyAnimatorHandler.SetPlayerHitTrigger();
+        }
+        int randomSound = Random.Range(1, 3);
+        SoundManager.Instance.PlaySoundAtPosition("Monster_Laugh" + randomSound, transform.position);
 
         // Check if the enemy is not dead before performing the dodge
         if (!enHealth.GetIsDead())
