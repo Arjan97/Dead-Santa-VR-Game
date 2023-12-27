@@ -46,8 +46,7 @@ public class BulletDamageHandler : MonoBehaviour
                 {
                     healthComponent.TakeDamage(damageAmount);
                     Debug.Log("Enemy hit for: " + damageAmount);
-                    int randomSound = Random.Range(1, 3);
-                    SoundManager.Instance.PlaySoundAtPosition("Zombie_Moan_" + randomSound, healthComponent.transform.position);
+                    SoundManager.Instance.PlaySoundAtPosition("monsterroar", healthComponent.transform.position);
                 }
             }
 
