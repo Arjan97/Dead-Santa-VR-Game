@@ -19,6 +19,8 @@ public class EnemySeparation : MonoBehaviour
             if (enemyCollider.gameObject != gameObject) 
             {
                 Vector3 separationDirection = transform.position - enemyCollider.transform.position;
+                separationDirection.y = 0f;
+
                 float distance = separationDirection.magnitude;
 
                 if (distance < separationDistance)

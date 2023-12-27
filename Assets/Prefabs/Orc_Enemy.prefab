@@ -1903,8 +1903,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599fab692ea13804db9232151bf3bd1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 2
-  attackDelay: 2
+  attackRange: 2.5
+  attackDelay: 3
   animationDelay: 0.3
   attackAnimationAmount: 2
   rangedProjectilePrefab: {fileID: 0}

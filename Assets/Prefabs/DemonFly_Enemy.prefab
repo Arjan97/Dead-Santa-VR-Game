@@ -1030,8 +1030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599fab692ea13804db9232151bf3bd1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 10
-  attackDelay: 3
+  attackRange: 12
+  attackDelay: 4
   animationDelay: 0.3
   attackAnimationAmount: 2
   rangedProjectilePrefab: {fileID: 164416, guid: 071c1ed84e86d9d4cb93b43f311d1a8d, type: 3}
@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e21e0d42e2c3941963d521f626f286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  separationDistance: 1
+  separationDistance: 3
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8192
