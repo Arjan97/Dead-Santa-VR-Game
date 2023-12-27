@@ -36,6 +36,7 @@ public class ChestUnlocked : MonoBehaviour
         // Check if the parent Rigidbody is not null
         if (parentRB != null)
         {
+            SoundManager.Instance.PlaySoundAtPosition("unlock", transform.position);
             // Allow rotation after the chest is unlocked
             parentRB.freezeRotation = false;
             // Call the ShowReward method in the RewardManager

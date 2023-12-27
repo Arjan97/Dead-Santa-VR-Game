@@ -860,6 +860,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f5e137f273d9974ab05cbfaa8c31fde, type: 3}
   - {fileID: 8300000, guid: 505d57ff5f271cd42a207dea473f1eb3, type: 3}
   - {fileID: 8300000, guid: e031a69076e31614080244175ab30d00, type: 3}
+  - {fileID: 8300000, guid: ccb5d57b69f52f34b9d1323dde5f4390, type: 3}
   musicTracks:
   - {fileID: 8300000, guid: a084f831b2416984987740a6fed1a7f7, type: 3}
   - {fileID: 8300000, guid: cfad79ea6e13c934a8a2d3d2229c9587, type: 3}
