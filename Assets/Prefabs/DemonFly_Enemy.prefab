@@ -943,6 +943,7 @@ GameObject:
   - component: {fileID: 102424715894316248}
   - component: {fileID: 102424715894316251}
   - component: {fileID: 2451062777546086056}
+  - component: {fileID: 4134826793680977274}
   m_Layer: 13
   m_Name: DemonFly_Enemy
   m_TagString: Enemy_Flying
@@ -1052,8 +1053,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   chaseRange: 25
-  avoidanceRadius: 0.5
-  separationForce: 3
   movementSpeed: 5
   rotationSpeed: 3
   toggleMove: 1
@@ -1100,6 +1099,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dodgeForce: 70
+--- !u!114 &4134826793680977274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992723739067941125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e21e0d42e2c3941963d521f626f286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  separationDistance: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &3992723739067941127
 GameObject:
   m_ObjectHideFlags: 0
