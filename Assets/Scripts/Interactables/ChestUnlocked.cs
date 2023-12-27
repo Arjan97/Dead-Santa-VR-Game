@@ -14,11 +14,15 @@ public class ChestUnlocked : MonoBehaviour
     // Reference to the parent Rigidbody of the chest
     private Rigidbody parentRB;
 
+    // Reference to the RewardManager
+    public RewardManager rewardManager; 
+
     void Start()
     {
         // Subscribe to the onSelectEntered event of the XRBaseInteractor
         socketInteractor.onSelectEntered.AddListener(OpenChest);
 
+        rewardManager = FindObjectOfType<RewardManager>();
         // Get the parent Rigidbody component
         parentRB = transform.parent.GetComponent<Rigidbody>();
 
@@ -34,6 +38,8 @@ public class ChestUnlocked : MonoBehaviour
         {
             // Allow rotation after the chest is unlocked
             parentRB.freezeRotation = false;
+            // Call the ShowReward method in the RewardManager
+            rewardManager.ShowReward();
         }
     }
 }
