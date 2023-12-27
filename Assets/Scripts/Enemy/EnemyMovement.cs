@@ -19,7 +19,12 @@ public class EnemyMovement : MonoBehaviour
     private EnemyAnimatorHandler animatorHandler;
     private EnemyAttack enAttack;
     private EnemyHealth enHealth;
-    // Start is called before the first frame update
+    
+    // Dynamic sounds
+    private float soundTimer;
+    private float minSoundDelay = 4f;
+    private float maxSoundDelay = 10f;
+
     void Start()
     {
         // Find the player and get component references
@@ -27,9 +32,9 @@ public class EnemyMovement : MonoBehaviour
         animatorHandler = GetComponent<EnemyAnimatorHandler>();
         enAttack = GetComponent<EnemyAttack>();
         enHealth = GetComponent<EnemyHealth>();
+        ResetSoundTimer();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Check if the player is present
@@ -63,6 +68,41 @@ public class EnemyMovement : MonoBehaviour
 
         // Move forward towards the player
         transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+
+        if (gameObject.tag == "Enemy")
+        {
+            // Check if it's time to play a sound
+            if (Time.time >= soundTimer)
+            {
+                PlayChaseSound("Zombie_Moan_", 3, 8);
+
+                // Reset the timer with a random interval
+                ResetSoundTimer();
+            }
+        }
+
+        if (gameObject.tag == "EnemyBoss")
+        {
+            // Check if it's time to play a sound
+            if (Time.time >= soundTimer)
+            {
+                PlayChaseSound("Big_Monster_", 1, 3);
+
+                // Reset the timer with a random interval
+                ResetSoundTimer();
+            }
+        }
+    }
+    void PlayChaseSound(string audioClip, int minRange, int maxRange)
+    {
+        int randomSound = Random.Range(minRange, maxRange);
+        SoundManager.Instance.PlaySoundAtPosition(audioClip + randomSound, transform.position);
+    }
+
+    void ResetSoundTimer()
+    {
+        // Set a new random interval for the next sound
+        soundTimer = Time.time + Random.Range(minSoundDelay, maxSoundDelay);
     }
 
     // Set idle animation state
