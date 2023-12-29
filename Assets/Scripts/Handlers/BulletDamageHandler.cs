@@ -24,7 +24,7 @@ public class BulletDamageHandler : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // Check if the collision involves an enemy
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBoss"))
         {
             // Check if the velocity is above the minimum required velocity
             if (rb != null && rb.velocity.magnitude >= minDamageVelocity)
@@ -33,10 +33,20 @@ public class BulletDamageHandler : MonoBehaviour
                 EnemyHealth healthComponent = collision.gameObject.GetComponent<EnemyHealth>();
 
                 // Deal damage to the enemy if the health component is present
-                if (healthComponent != null)
+                if (healthComponent != null && healthComponent.tag == "Enemy")
                 {
                     healthComponent.TakeDamage(damageAmount);
                     Debug.Log("Enemy hit for: " + damageAmount);
+                    int randomSound = Random.Range(1, 3);
+                    SoundManager.Instance.PlaySoundAtPosition("Zombie_Moan_" + randomSound, healthComponent.transform.position);
+                }
+
+                // Deal damage to the enemy if the health component is present
+                if (healthComponent != null && healthComponent.tag == "EnemyBoss")
+                {
+                    healthComponent.TakeDamage(damageAmount);
+                    Debug.Log("Enemy hit for: " + damageAmount);
+                    SoundManager.Instance.PlaySoundAtPosition("monsterroar", healthComponent.transform.position);
                 }
             }
 

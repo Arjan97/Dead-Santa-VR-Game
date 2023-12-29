@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: -2331537751670201851}
   m_Layer: 13
   m_Name: DemonKing_Enemy
-  m_TagString: Enemy
+  m_TagString: EnemyBoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

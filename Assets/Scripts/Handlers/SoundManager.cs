@@ -70,7 +70,6 @@ public class SoundManager : MonoBehaviour
 
         // Play the initial music track
         PlayMusic(songName, musicVolume);
-        PlaySound("Monster_Noise");
     }
 
     // Play a sound effect without specifying a position
@@ -85,11 +84,10 @@ public class SoundManager : MonoBehaviour
 
         if (clipToPlay != null)
         {
-            // Get the next available AudioSource from the pool
-            AudioSource soundEffectSource = soundEffectSources[currentSoundEffectIndex];
+            // Find the first available AudioSource in the pool
+            AudioSource soundEffectSource = GetAvailableSoundEffectSource();
 
-            // Check if the AudioSource is currently playing
-            if (!IsSoundPlaying(soundEffectSource))
+            if (soundEffectSource != null)
             {
                 // Set properties and play the sound effect
                 soundEffectSource.transform.position = position;
@@ -98,17 +96,30 @@ public class SoundManager : MonoBehaviour
                 soundEffectSource.pitch = Mathf.Clamp(pitch, 0.1f, 3f);
 
                 soundEffectSource.Play();
-
-                // Increment the index for the next available AudioSource
-                currentSoundEffectIndex = (currentSoundEffectIndex + 1) % soundEffectSources.Count;
             }
             else
             {
-                // Log a message or handle the case where the AudioSource is already playing
-                Debug.LogWarning("Sound is already playing. Wait for it to finish or use a different AudioSource.");
+                // Log a message or handle the case where no AudioSource is available
+                Debug.LogWarning("No available AudioSource. Wait for one to be free or increase the pool size.");
             }
         }
     }
+
+    private AudioSource GetAvailableSoundEffectSource()
+    {
+        // Check each AudioSource in the pool to find one that is not playing
+        foreach (AudioSource source in soundEffectSources)
+        {
+            if (!IsSoundPlaying(source))
+            {
+                return source;
+            }
+        }
+
+        // If all sources are currently playing, return null
+        return null;
+    }
+
 
     // Check if an AudioSource is currently playing
     private bool IsSoundPlaying(AudioSource audioSource)
