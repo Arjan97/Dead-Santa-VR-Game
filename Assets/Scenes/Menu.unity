@@ -3504,6 +3504,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
+      propertyPath: ambientSoundClips.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6143255276875620942, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
       propertyPath: congratulationPanel
       value: 

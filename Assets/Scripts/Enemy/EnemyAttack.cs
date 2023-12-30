@@ -149,6 +149,7 @@ public class EnemyAttack : MonoBehaviour
         enMove.toggleMove = false;
         animatorHandler.SetBattleIdle();
         MeleeAttack();
+        SoundManager.Instance.PlaySoundAtPosition("swingingwoosh", transform.position);
         yield return new WaitForSeconds(attackDelay);
         enMove.toggleMove = true;
         isAttacking = false;
