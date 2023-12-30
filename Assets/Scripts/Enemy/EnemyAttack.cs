@@ -187,6 +187,7 @@ public class EnemyAttack : MonoBehaviour
             StartCoroutine(TauntCooldown());
             isTaunting = true;
             animatorHandler.SetTaunt();
+            enMove.toggleMove = false;
         }
     }
 
@@ -195,5 +196,7 @@ public class EnemyAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(attackDelay);
         isTaunting = false;
+        enMove.toggleMove = true;
+
     }
 }
