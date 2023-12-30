@@ -134,7 +134,7 @@ public class SoundManager : MonoBehaviour
                 soundEffectSource.spatialBlend = 1f;
                 soundEffectSource.rolloffMode = AudioRolloffMode.Linear;
                 soundEffectSource.maxDistance = soundTravelDistance;
-                Debug.Log($"Playing sound: {soundName} at position: {position}");
+                //Debug.Log($"Playing sound: {soundName} at position: {position}");
 
                 soundEffectSource.Play();
             }
