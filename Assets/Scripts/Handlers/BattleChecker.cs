@@ -18,34 +18,38 @@ public class BattleChecker : MonoBehaviour
             {
                 Debug.Log("Player sees enemies");
                 UpdateBattleState();
-                SoundManager.Instance.PlayMusic("battlemusic", 0.4f, musicPlaybackPosition);
+                SoundManager.Instance.PlayMusic("scaryviolins", 0.5f, musicPlaybackPosition);
                 isInBattle = true;
             }
+        }
+
+        if (other.CompareTag("EnemyBoss"))
+        {
+            enemyCountInArea++;
+            UpdateBattleState();
+            isInBattle = true;
+            Debug.Log("Player sees boss");
+            SoundManager.Instance.PlayMusic("orchestra", 0.5f, musicPlaybackPosition);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("Enemy_Flying"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Enemy_Flying") || other.CompareTag("EnemyBoss"))
         {
             enemyCountInArea--;
-
-            if (isInBattle)
-            {
-                Debug.Log("Player no longer sees enemies");
-                UpdateBattleState();
-            }
+            UpdateBattleState();
         }
     }
 
     void UpdateBattleState()
     {
         // Check if there are still enemies in the area
-        if (enemyCountInArea == 0)
+        if (enemyCountInArea <= 0)
         {
             Debug.Log("No more enemies in the battle area");
             musicPlaybackPosition = SoundManager.Instance.GetMusicPlaybackPosition();
-            SoundManager.Instance.PlayMusic("abnormal", 0.4f, musicPlaybackPosition);
+            SoundManager.Instance.PlayMusic("spookywind", 0.5f, musicPlaybackPosition);
             isInBattle = false;
         }
     }

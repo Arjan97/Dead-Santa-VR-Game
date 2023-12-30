@@ -11581,9 +11581,45 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
-      propertyPath: musicVolume
-      value: 0.2
+      propertyPath: songName
+      value: spookywind
       objectReference: {fileID: 0}
+    - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
+      propertyPath: musicVolume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
+      propertyPath: soundVolume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
+      propertyPath: ambientVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
+      propertyPath: maxAmbientInterval
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
+      propertyPath: minAmbientInterval
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
+      propertyPath: soundTravelDistance
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
+      propertyPath: ambientSoundInterval
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
+      propertyPath: musicTracks.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143255276337145699, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
+      propertyPath: musicTracks.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: f2bcf6638b338bb428dcc36908e34046, type: 3}
     - target: {fileID: 6143255276875620942, guid: d73cf2c75f69b994d8436b6b71e71f61, type: 3}
       propertyPath: congratulationPanel
       value: 
