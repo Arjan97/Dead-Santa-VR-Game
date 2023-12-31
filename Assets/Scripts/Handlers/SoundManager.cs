@@ -15,6 +15,13 @@ public class SoundManager : MonoBehaviour
     // Arrays for storing sound effects and music tracks
     public AudioClip[] soundClips;
     public AudioClip[] musicTracks;
+    public AudioClip[] ambientSoundClips;
+
+    // Interval between ambient sound plays in seconds
+    public float ambientSoundInterval = 5f;
+    public float minAmbientInterval = 5f; 
+    public float maxAmbientInterval = 15f;
+    private float lastAmbientSoundTime;
 
     // AudioSources for playing sound effects and music
     private AudioSource soundSource;
@@ -23,7 +30,7 @@ public class SoundManager : MonoBehaviour
     // Default volumes for sound effects and music
     public float soundVolume = 1f;
     public float musicVolume = 1f;
-
+    public float ambientVolume = 1f;
     // Create a pool of AudioSources for sound effects to prevent overlapping/cancellations
     private List<AudioSource> soundEffectSources = new List<AudioSource>();
     private int currentSoundEffectIndex = 0;
@@ -48,10 +55,8 @@ public class SoundManager : MonoBehaviour
         soundSource = gameObject.AddComponent<AudioSource>();
         musicSource = gameObject.AddComponent<AudioSource>();
 
-        // Configure 3D spatialization for sound effects
-        soundSource.spatialBlend = 1f; // 1 means fully 3D, 0 means 2D
-        soundSource.rolloffMode = AudioRolloffMode.Linear;
-        soundSource.maxDistance = soundTravelDistance;
+        // Initialize lastAmbientSoundTime
+        lastAmbientSoundTime = Time.time; 
 
         // Create a pool of AudioSources for sound effects
         for (int i = 0; i < 5; i++) 
@@ -71,6 +76,37 @@ public class SoundManager : MonoBehaviour
         // Play the initial music track
         PlayMusic(songName, musicVolume);
     }
+
+    private void Update()
+    {
+        // Play ambient sounds randomly
+        PlayRandomAmbientSound();
+    }
+
+
+    private void PlayRandomAmbientSound()
+    {
+        if (ambientSoundClips.Length != 0)
+        {
+            // Check if enough time has passed since the last ambient sound play
+            if (Time.time - lastAmbientSoundTime > ambientSoundInterval)
+            {
+                // Get a random ambient sound clip
+                AudioClip randomAmbientClip = ambientSoundClips[Random.Range(0, ambientSoundClips.Length)];
+
+                // Play the ambient sound
+                PlaySound(randomAmbientClip.name, ambientVolume);
+
+                // Update lastAmbientSoundTime
+                lastAmbientSoundTime = Time.time;
+
+                // Generate a new random interval for the next ambient sound play
+                ambientSoundInterval = Random.Range(minAmbientInterval, maxAmbientInterval);
+            }
+        }
+      
+    }
+
 
     // Play a sound effect without specifying a position
     public void PlaySound(string soundName, float volume = 1f)
@@ -94,6 +130,11 @@ public class SoundManager : MonoBehaviour
                 soundEffectSource.clip = clipToPlay;
                 soundEffectSource.volume = Mathf.Clamp01(volume);
                 soundEffectSource.pitch = Mathf.Clamp(pitch, 0.1f, 3f);
+                // Set to 3d audio, linear rolloff mode and max distance
+                soundEffectSource.spatialBlend = 1f;
+                soundEffectSource.rolloffMode = AudioRolloffMode.Linear;
+                soundEffectSource.maxDistance = soundTravelDistance;
+                //Debug.Log($"Playing sound: {soundName} at position: {position}");
 
                 soundEffectSource.Play();
             }
@@ -174,4 +215,34 @@ public class SoundManager : MonoBehaviour
         Debug.LogWarning("Audio clip not found: " + clipName);
         return null;
     }
+
+    // Find an audio clip by name in the specified arrays
+    private AudioClip FindAudioClip(string clipName)
+    {
+        AudioClip foundClip;
+
+        // Search in soundClips array
+        foundClip = FindAudioClip(clipName, soundClips);
+        if (foundClip != null)
+        {
+            return foundClip;
+        }
+
+        // Search in ambientSoundClips array
+        foundClip = FindAudioClip(clipName, ambientSoundClips);
+        if (foundClip != null)
+        {
+            return foundClip;
+        }
+
+        // Search in musicTracks array
+        foundClip = FindAudioClip(clipName, musicTracks);
+        if (foundClip != null)
+        {
+            return foundClip;
+        }
+
+        return null;
+    }
+
 }

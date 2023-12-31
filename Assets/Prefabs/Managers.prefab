@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundTravelDistance: 20
-  songName: abnormal
+  songName: HorrorMenuSong
   soundClips:
   - {fileID: 8300000, guid: 8698acf7299a6d04594312496ed0ecf6, type: 3}
   - {fileID: 8300000, guid: dc2c1bdb2cfb9be438a70b944784b6e7, type: 3}
@@ -89,8 +89,28 @@ MonoBehaviour:
   musicTracks:
   - {fileID: 8300000, guid: a084f831b2416984987740a6fed1a7f7, type: 3}
   - {fileID: 8300000, guid: cfad79ea6e13c934a8a2d3d2229c9587, type: 3}
+  - {fileID: 8300000, guid: 01fc864624ea6044aa2bd1f3753d53c5, type: 3}
+  - {fileID: 8300000, guid: 4c2e7ce10e2046545a121fbb3b3dabeb, type: 3}
+  - {fileID: 8300000, guid: 9e4e1f7e94379ec4492d5d7435abf3d0, type: 3}
+  ambientSoundClips:
+  - {fileID: 8300000, guid: 18e099dddcd148c4088f307ae50a3116, type: 3}
+  - {fileID: 8300000, guid: 1a81edc0d6fa4684fa98581fe821d7e2, type: 3}
+  - {fileID: 8300000, guid: 762ea845d0d2b5a4b866edab269a2ccd, type: 3}
+  - {fileID: 8300000, guid: ec29f0f246035ab46a8ac2a7a777a8bd, type: 3}
+  - {fileID: 8300000, guid: 73381e21cc25df544b696319d8019959, type: 3}
+  - {fileID: 8300000, guid: f84fac88f84b7cd449b16aaa256d4b81, type: 3}
+  - {fileID: 8300000, guid: 864cf343054756147a190ed19923b136, type: 3}
+  - {fileID: 8300000, guid: 8fa0688f25bec9a488d66a98180bbed3, type: 3}
+  - {fileID: 8300000, guid: 761472c005699da4d83b9f26c4e6f47e, type: 3}
+  - {fileID: 8300000, guid: b93164bafe2224347824411552deb58c, type: 3}
+  - {fileID: 8300000, guid: bc9f67a25b66a7243a7ad01877469aa3, type: 3}
+  - {fileID: 8300000, guid: 208dd65afe1b46949a68097512837197, type: 3}
+  ambientSoundInterval: 10
+  minAmbientInterval: 15
+  maxAmbientInterval: 45
   soundVolume: 1
-  musicVolume: 0.4
+  musicVolume: 0.3
+  ambientVolume: 0.7
 --- !u!1 &6143255276875620928
 GameObject:
   m_ObjectHideFlags: 0

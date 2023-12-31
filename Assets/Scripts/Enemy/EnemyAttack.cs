@@ -149,6 +149,7 @@ public class EnemyAttack : MonoBehaviour
         enMove.toggleMove = false;
         animatorHandler.SetBattleIdle();
         MeleeAttack();
+        SoundManager.Instance.PlaySoundAtPosition("swingingwoosh", transform.position);
         yield return new WaitForSeconds(attackDelay);
         enMove.toggleMove = true;
         isAttacking = false;
@@ -187,6 +188,7 @@ public class EnemyAttack : MonoBehaviour
             StartCoroutine(TauntCooldown());
             isTaunting = true;
             animatorHandler.SetTaunt();
+            enMove.toggleMove = false;
         }
     }
 
@@ -195,5 +197,7 @@ public class EnemyAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(attackDelay);
         isTaunting = false;
+        enMove.toggleMove = true;
+
     }
 }
